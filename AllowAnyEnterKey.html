@@ -1,0 +1,29 @@
+<!--allow Enter key to be used to submit a form from any field-->
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+         "http://www.w3.org/TR/html4/strict.dtd">
+
+<HTML>
+<HEAD>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+
+</HEAD>
+
+<BODY onload="document.myForm.myField1.focus();">
+
+After entering data into the boxes you can use the ENTER key<BR />
+to 'click' the SUBMIT button<BR />
+
+<FORM name="myForm" onsubmit="return true;">
+  <INPUT type="text" name="myField1" size="40"
+         onKeyDown="if(event.keyCode==13){this.form.submit();}" />
+  <INPUT type="text" name="myField2" size="30"
+         onKeyDown="if(event.keyCode==13){this.form.submit();}" />
+  <INPUT type="text" name="myField3" size="20"
+         onKeyDown="if(event.keyCode==13){this.form.submit();}" />
+  <INPUT type="button" value="submit"
+         onclick="this.form.submit();" />
+</FORM>
+
+</BODY>
+</HTML>

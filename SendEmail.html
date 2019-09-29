@@ -1,0 +1,27 @@
+<!--type an email in the web page then send it-->
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+         "http://www.w3.org/TR/html4/strict.dtd">
+
+<HTML>
+<HEAD>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+
+</HEAD>
+
+<BODY>
+
+<form name="mail">
+  <STRONG>To: (E-mail address)</STRONG><BR /><input type=text name="to" size=50><BR /><BR />
+  <STRONG>From: (Your name)</STRONG><BR /><input type=text name="from" size=50><BR /><BR />
+  <STRONG>Message:</STRONG><BR />
+  <TEXTAREA NAME="message" ROWS=8 COLS=50 wrap=virtual></TEXTAREA><BR /><BR />
+  <input type=button value="Send Message"
+         onClick="window.open('_SendEmail.html', 'mailWin', 'toolbar=no,location=no,'
+         +'directories=no,status=no,menubar=no,scrollbars=no,resizable=no,'
+         +'copyhistory=no,width=250,height=100')">
+  <input type=reset value="Reset Form">
+</form>
+
+</BODY>
+</HTML>

@@ -1,0 +1,204 @@
+<HTML>
+<HEAD>
+
+<STYLE TYPE="text/css">
+<!--
+.coolButton {width:20; height:20; margin:1px;}
+-->
+</STYLE>
+
+<SCRIPT type="text/javascript" src="DockBar.js"></SCRIPT>
+<SCRIPT type="text/javascript" src="coolButtons.js"></SCRIPT>
+<SCRIPT type="text/javascript"></SCRIPT>
+
+<SCRIPT language="JavaScript">
+<!-- Begin hiding JavaScript from older browsers --
+
+var floatWidth  = 127;
+var floatHeight =  26;   // extra 4 for the border
+
+var snapHorizSize = 22;  // This is how far from the edge the
+var snapVertSize  = 22;  // the mouse is before the toolbar docks
+
+var horizDockWidth = 51; // When docked to the left or right
+var vertDockHeight = 19;
+
+var toolbarPos = "top";  // Start at this position
+
+var roots = new Array();
+
+function toolBarOnDock()
+{
+  if (roots.length == 0)
+  {
+    var spans = document.all.tags("SPAN")
+    var j=0;
+    for (var i=0; i<spans.length; i++)
+    {
+      if (spans[i].className == "root")
+          roots[j++] = spans[i];
+    }
+  }
+
+  switch (toolbarPos)
+  {
+    case "top":
+    case "bottom":
+    case "float":
+         for (var i=0; i<roots.length; i++)
+         {
+           roots[i].direction = "vertical";
+           roots[i].style.width = "";
+         }
+         break;
+
+    case "left":
+    case "right":
+         for (var i=0; i<roots.length; i++)
+         {
+           roots[i].direction = "horizontal";
+           roots[i].style.width = "50px";
+         }
+         break;
+  }
+}
+
+document.onmousedown = newDownHandler;
+document.onmouseup   = newUpHandler;
+
+function newDownHandler( )
+{
+  doDown();
+  dockBarOnMouseDown();
+}
+
+function newUpHandler( )
+{
+  doUp();
+  dockBarOnMouseUp();
+}
+
+//-- End hiding JavaScript from older browsers -->
+</SCRIPT>
+</HEAD>
+
+<BODY scroll="no" onselectstart="return false">
+
+<SCRIPT language="JavaScript">
+<!-- Begin hiding JavaScript from older browsers --
+
+
+//-- End hiding JavaScript from older browsers -->
+</SCRIPT>
+
+  <div id="toolbar" ondock="toolBarOnDock()">
+    <span id="handle" onmousedown="hideAllMenuScriptlets()"></span>
+    <span class="menuBar" id="menuBar"
+           onmouseover="menuBarOver()"
+           onmouseout="menuBarOut()"
+           onclick="menuBarClick()">
+       <span class="root" menu="fileMenu">File</span>
+       <span class="root" menu="editMenu">Edit</span>
+       <span class="root" menu="WebFXMenu">WebFX</span>
+    </span>
+  </div>
+
+<!-- Define the menus -->
+<table cellspacing="0" class="menu" id="fileMenu" title="This menu has not been hooked up">
+<tr>
+   <td class="icon"><img src="new.gif"></td>
+   <td nowrap>New</td>
+   <td></td>
+</tr>
+<tr>
+   <td class="icon"><img src="openfoldericon.gif"></td>
+   <td nowrap>Open</td>
+   <td></td>
+</tr>
+<tr>
+   <td class="icon"><img src="driveicon.gif"></td>
+   <td nowrap>Save</td>
+   <td></td>
+</tr>
+<tr>
+   <td></td>
+   <td nowrap>Save As...</td>
+   <td></td>
+</tr>
+<tr class="disabled">
+   <td nowrap colspan="3" style="height: 10px; padding: 0;">
+      <div style="border: 1px inset ; height: 2; overflow: hidden;"></div>
+   </td>
+</tr>
+<tr>
+   <td></td>
+   <td nowrap>Close</td>
+   <td></td>
+</tr>
+</table>
+
+<table cellspacing="0" class="menu" id="editMenu">
+<tr class="disabled">
+   <td></td>
+   <td>Empty</td>
+   <td></td>
+</tr>
+</table>
+
+<table cellspacing="0" class="menu" id="WebFXMenu">
+<tr href="/index.htm">
+   <td class="icon"><img src="favicon.gif"></td>
+   <td nowrap>WebFX Home</td>
+   <td></td>
+</tr>
+<tr href="mailto:erik@eae.net">
+   <td class="icon"><img src="mail.gif"></td>
+   <td nowrap>Mail Erik</td>
+   <td></td>
+</tr>
+<tr href="mailto:eae@eae.net">
+   <td class="icon"><img src="mail.gif"></td>
+   <td nowrap>Mail Emil</td>
+   <td></td>
+</tr>
+</table>
+
+<div id="contentDiv">
+  <script type="text/javascript">fixSize();</script>
+
+  <!--content goes here-->
+
+</div>
+
+<!--the reason the below code is so compact and has odd line breaks is so that no white space appears between the buttons-->
+<div id="toolbar" onselectstart="return false"><span id="handle" title="Drag to move the container"></span
+><span class="coolButton" title="Previous" onclick="window.location='dockbar2.shtml'"><img src="/images/arrowleft.gif" align="absmiddle" width=16 height=16></span
+><span class="coolButton" title="Next" id="next"><img src="/images/arrowright.gif" align="absmiddle" width=16 height=16></span
+><span class="coolButton" title="Home" onclick="window.open('/index.htm/','_top')"><img src="/favicon.gif" width=16 height=16 align="absmiddle"></span
+><span class="coolButton" title="Discuss this article"><img src="/images/desktop.gif" align="absmiddle" width=16 height=16></span
+></div>
+
+
+</BODY>
+</HTML>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

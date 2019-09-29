@@ -1,0 +1,163 @@
+<!--directory assistant lookup of persons, places or things-->
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+         "http://www.w3.org/TR/html4/strict.dtd">
+
+<HTML>
+<HEAD>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+
+
+<SCRIPT type="text/javascript">
+<!-- Begin hiding JavaScript from older browsers --
+
+function initArray()
+{
+  this.length = initArray.arguments.length;
+  for (var i = 0; i < this.length; i++)
+  {
+    this[i] = initArray.arguments[i];
+  }
+}
+
+
+// ============================================================================
+// =====   NOTE TO DEVELOPER
+// =====
+// =====   All you gotta do is:  load the below array with the appropriate
+// =====   info. The format of each array element is irrelevant. Everything
+// =====   within the rcrd[nn] for the corresponding selected letter will be
+// =====   displayed.
+// =====
+// =====   The backslash-r (\r) is used to denote the new line character in
+// =====   the text area.
+// =====
+// =====   If a given letter has no enteries (e.g. nobody starting with the
+// =====   letter 'Q') then do not define that record (e.g. in the case of
+// =====   'Q' just skip defining rcrd[16] )
+// ============================================================================
+
+var rcrd = new initArray("4b","5b","8b","8b");
+
+rcrd[0]  = "Gracie Allen, Bookkeeping, Tel. 234-5678 ext 13"
+       + "\rHarold Ammons, Engineering, Tel. 777-0987 ext 23"
+       + "\rJames Atkin, Research and Development, Tel. 777-0933 ext 17";
+rcrd[1]  = "George Burns, Public Relations, Tel. 232-5178 ext 91"
+       + "\rAnne Byzantine, Political Liasson, Tel. 456-0987 ext 33";
+rcrd[2]  = "Harrison Czar, Administration, Tel. 232-5178 ext 12";
+rcrd[3]  = "Dillard Dally, Corporate Efficiency, Tel. 232-5178 ext 88 "
+       + "email: dillydally@corp.com"
+       + "\rSandy Dodge, Secretarial, Tel. 456-6543 ext 44";
+rcrd[4]  = "Heloise Eloise, Human Relations, Tel. 232-2909 ext 59"
+       + "\rJerry Ezzard, Political Liasson, Tel. 456-9800 ext 41";
+rcrd[5]  = "George Fatchance, Corporate Lending, Tel. 546-7712 ext 19"
+       + "\rBjorn Fjord, Foreign Relations, Tel. 456-6651 ext 28";
+rcrd[6]  = "Oprah Gagnon, Media Relations, Tel. 232-5178 ext 12";
+rcrd[7]  = "Sally Hopkins, Administration, Tel. 339-7081 ext 3";
+rcrd[9]  = "Bo Jackson, Public Relations, Tel. 232-5178 ext 12"
+       + "\rAnne Johnson, Political Liasson, Tel. 456-0987 ext 33";
+rcrd[10] = "Gary Kapperson, Public Relations, Tel. 232-5178 ext 12"
+       + "\rAdam Kotch, Political Liasson, Tel. 456-5543 ext 31";
+rcrd[11] = "Bunny Lane, Operations, Tel. 232-3812 ext 16"
+       + "\rFranz Lizt, Entertainment Operations, Tel. 456-0987 ext 90";
+rcrd[12] = "Drake Mallard, Administration, Tel. 712-6622 ext 4"
+       + "\rAllison Majors, Operations, Tel. 456-6908 ext 24";
+rcrd[13] = "George Nabors, Marketing, Tel. 232-4009 ext 11"
+       + "\rTabitha Noonan, Accounts Receivable, Tel. 332-6755 ext 57";
+rcrd[15] = "Mary Payton, Accounts Receivable, Tel. 217-2233 ext 58"
+       + "\rJohn Pyne, Marketing, Tel. 456-5002 ext 2";
+rcrd[17] = "Claude Raines, Corporate History, Tel. 533-2203 ext 14"
+       + "\rBabs Reese, Marketing, Tel. 456-0987 ext 33";
+rcrd[18] = "Terri Samuelson, Public Relations, Tel. 232-4090 ext 62"
+       + "\rSally Smith, Marketing, Tel. 456-3321 ext 65";
+rcrd[19] = "John Thomas, Administration, Tel. 598-7202 ext 66"
+       + "\rThomas Tuttle, Political Liasson, Tel. 456-5231 ext 15";
+rcrd[21] = "Sarah Vaughn, Administration, Tel. 232-7211 ext 68"
+       + "\rVictor Victor, Engineering, Tel. 456-7450 ext 23";
+rcrd[22] = "George Watkins, Research and Development, Tel. 882-2834 ext 63"
+       + "\rAnne Wylie, Mailroom, Tel. 855-2200 ext 42";
+rcrd[24] = "Patti Yarrow, Administration, Tel. 232-5178 ext 12";
+
+function dataBase(isnform)
+{
+  for (var i = 0; i < 26; i++)
+  {
+    if (isnform.alpha[i].checked)
+    {
+      recnum = isnform.alpha[i].value;
+    }
+  }
+  if (rcrd[recnum] != null)
+  {
+    document.isnform.display.value = rcrd[recnum];
+  }
+  else
+    document.isnform.display.value = "Sorry, no listings for that letter.";
+}
+//-- End hiding JavaScript from older browsers -->
+</SCRIPT>
+
+
+<BODY>
+
+<FORM NAME="isnform">
+ <TABLE BORDER=0 WIDTH=486>
+  <TR>
+   <TD><B>Directory Assistant</B></TD>
+   <TD><INPUT TYPE="radio" NAME="alpha" VALUE="0" CHECKED>A</TD>
+   <TD><INPUT TYPE="radio" NAME="alpha" VALUE="1">B</TD>
+   <TD><INPUT TYPE="radio" NAME="alpha" VALUE="2">C</TD>
+   <TD><INPUT TYPE="radio" NAME="alpha" VALUE="3">D</TD>
+   <TD><INPUT TYPE="radio" NAME="alpha" VALUE="4">E</TD>
+  </TR>
+  <TR>
+   <TD></TD>
+   <TD><INPUT TYPE="radio" NAME="alpha" VALUE="5">F</TD>
+   <TD><INPUT TYPE="radio" NAME="alpha" VALUE="6">G</TD>
+   <TD><INPUT TYPE="radio" NAME="alpha" VALUE="7">H</TD>
+   <TD><INPUT TYPE="radio" NAME="alpha" VALUE="8">I</TD>
+   <TD><INPUT TYPE="radio" NAME="alpha" VALUE="9">J</TD>
+  </TR>
+  <TR>
+   <TD><FONT SIZE=2><B>Instructions: </B>
+        Simply click the letter of the first</FONT></TD>
+   <TD><INPUT TYPE="radio" NAME="alpha" VALUE="10">K</TD>
+   <TD><INPUT TYPE="radio" NAME="alpha" VALUE="11">L</TD>
+   <TD><INPUT TYPE="radio" NAME="alpha" VALUE="12">M</TD>
+   <TD><INPUT TYPE="radio" NAME="alpha" VALUE="13">N</TD>
+   <TD><INPUT TYPE="radio" NAME="alpha" VALUE="14">O</TD>
+  </TR>
+  <TR>
+   <TD><FONT SIZE=2>initial of the last name of the person desired</FONT></TD>
+   <TD><INPUT TYPE="radio" NAME="alpha" VALUE="15">P</TD>
+   <TD><INPUT TYPE="radio" NAME="alpha" VALUE="16">Q</TD>
+   <TD><INPUT TYPE="radio" NAME="alpha" VALUE="17">R</TD>
+   <TD><INPUT TYPE="radio" NAME="alpha" VALUE="18">S</TD>
+   <TD><INPUT TYPE="radio" NAME="alpha" VALUE="19">T</TD>
+  </TR>
+  <TR>
+   <TD><FONT SIZE=2>Then click the Find button.</FONT></TD>
+   <TD><INPUT TYPE="radio" NAME="alpha" VALUE="20">U</TD>
+   <TD><INPUT TYPE="radio" NAME="alpha" VALUE="21">V</TD>
+   <TD><INPUT TYPE="radio" NAME="alpha" VALUE="22">W</TD>
+   <TD><INPUT TYPE="radio" NAME="alpha" VALUE="23">X</TD>
+   <TD><INPUT TYPE="radio" NAME="alpha" VALUE="24">Y</TD>
+  </TR>
+  <TR>
+   <TD ALIGN=CENTER><INPUT TYPE="button" NAME="but" VALUE=" Find "
+       onClick="dataBase(this.form)"></TD><TD></TD><TD></TD><TD><INPUT
+       TYPE="radio" NAME="alpha" VALUE="25">Z</TD>
+  </TR>
+ </TABLE>
+ <TABLE BORDER=0 WIDTH=486>
+  <TR>
+   <TD ALIGN=CENTER><TEXTAREA NAME="display" ROWS=6 COLS=55 WRAP=yes>
+                    </TEXTAREA>
+   </TD>
+  </TR>
+ </TABLE>
+</FORM>
+
+</BODY>
+</HTML>
+

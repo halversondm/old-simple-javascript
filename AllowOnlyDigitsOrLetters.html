@@ -1,0 +1,83 @@
+<!--allow only digits, or only letters, or both, to be entered into a field-->
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+         "http://www.w3.org/TR/html4/strict.dtd">
+
+<HTML>
+<HEAD>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+
+
+<SCRIPT type="text/javascript">
+<!-- Begin hiding JavaScript from older browsers --
+
+function digitsOnly( evt )
+{
+   evt = (evt) ? evt : event;
+   var charCode = (evt.charCode) ? evt.charCode
+                : ( (evt.which) ? evt.which : evt.keyCode );
+
+   if ( charCode >= 48  &&  charCode <= 57 ) // 48-57 = digits
+   {
+     return true;
+   }
+   alert( "Enter only digits (0-9) into this field" );
+   return false;
+}
+
+function lettersOnly( evt )
+{
+   evt = (evt) ? evt : event;
+   var charCode = (evt.charCode) ? evt.charCode
+                : ( (evt.which) ? evt.which : evt.keyCode );
+
+   if (( charCode >= 65  &&  charCode <=  90 )   //  65-90=uppercase
+    || ( charCode >= 97  &&  charCode <= 122 )   // 97-122=lowercase
+    || ( charCode >= 32  &&  charCode <=  32 ) ) //     32=space
+   {
+      return true;
+   }
+   alert( "Enter only letters (A-Z,a-z) into this field" );
+   return false;
+}
+
+function lettersOrDigitsOnly( evt )
+{
+   evt = (evt) ? evt : event;
+   var charCode = (evt.charCode) ? evt.charCode
+                : ( (evt.which) ? evt.which : evt.keyCode );
+
+   if (( charCode >= 48  &&  charCode <=  57 )   //  48-57=digits
+    || ( charCode >= 65  &&  charCode <=  90 )   //  65-90=uppercase
+    || ( charCode >= 97  &&  charCode <= 122 )   // 97-122=lowercase
+    || ( charCode >= 32  &&  charCode <=  32 ) ) //     32=space
+   {
+     return true;
+   }
+   alert( "Enter only letters or digits (0-9,A-Z,a-z) into this field" );
+   return false;
+}
+
+//-- End hiding JavaScript from older browsers -->
+</SCRIPT>
+</HEAD>
+
+<BODY onload="document.myForm.myField1.focus();">
+
+Some fields will only allow digits to be entered into them -- try them<BR />
+
+<FORM name="myForm">
+
+   Age:
+  <INPUT type="text" name="myField1" id="myAge" size="4"
+         onkeypress="return digitsOnly(event,'N')" />
+   Name:
+  <INPUT type="text" name="myField2" id="myName" size="40"
+         onkeypress="return lettersOnly(event,'N')" />
+   Address:
+  <INPUT type="text" name="myField3" id="myAddress" size="40"
+         onkeypress="return lettersOrDigitsOnly(event)"; />
+</FORM>
+
+</BODY>
+</HTML>

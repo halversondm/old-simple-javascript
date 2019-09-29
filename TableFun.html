@@ -1,0 +1,315 @@
+<HTML>
+<HEAD>
+<TITLE>JavaScript - Fun with tables</TITLE>
+<LINK REL="stylesheet" HREF="js.css">
+<SCRIPT SRC="js.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" TYPE="text/javascript">
+<!--
+var theTable;
+var theCell = document.createElement('TD');
+var temp1 = theCell.appendChild(document.createElement('SPAN'));
+temp1.appendChild(document.createTextNode('Insert TD'));
+theCell.appendChild(document.createElement('INPUT'));
+theCell.appendChild(document.createElement('BR'));
+var temp2 = theCell.appendChild(document.createElement('BUTTON'));
+temp2.appendChild(document.createTextNode('Delete TR'));
+
+var New = document.createElement('B');
+New.style.color = '#cc0000';
+New.style.display = 'block';
+New.appendChild(document.createTextNode('New!'));
+
+function init()
+{
+	if (document.getElementById)
+	{
+		theTable = document.getElementsByTagName('TABLE')[0];
+		var y = document.getElementsByTagName('TD');
+		for (var i =0;i<y.length;i++)
+		{
+			if (y[i].className == 'ex')
+			{
+				y[i].onclick= function () {getIndices(this)}
+				delBut(y[i])
+			}
+			else if (y[i].className == 'header')
+				y[i].getElementsByTagName('SPAN')[0].onclick = function () {inserttheRow(this)}
+		}
+		var z = document.getElementsByTagName('TR');
+		for (var i =0;i<z.length;i++)
+		{
+			if (z[i].cells.length < 3) continue;
+			var b = z[i].appendChild(theCell.cloneNode(true));
+			b.firstChild.onclick = function () {inserttheCell(this)}
+			b.lastChild.onclick = function() {delRow(this)}
+		}
+
+	}
+	else if (document.all)
+		theTable = document.all.tags('TABLE')[0];
+
+}
+
+function delBut(obj)
+{
+	obj.appendChild(document.createElement('BR'));
+	var x = document.createElement('BUTTON');
+	x.appendChild(document.createTextNode('Delete TD'));
+	x.onclick = function () {delCell(this)}
+	obj.appendChild(x);
+}
+
+function theCells()
+{
+	alert(theTable.tBodies[0].rows[1].cells.length)
+}
+
+function theRows()
+{
+	alert(theTable.tBodies[0].rows.length)
+}
+
+function theBodies()
+{
+	alert(theTable.tBodies.length)
+}
+
+function delCap()
+{
+	theTable.deleteCaption();
+}
+
+function delCell(obj)
+{
+	obj = obj.parentNode;
+	var row = obj.parentNode.rowIndex;
+	alert('theTable.rows[' + row + '].deleteCell(' + obj.cellIndex + ')');
+	theTable.rows[row].deleteCell(obj.cellIndex);
+}
+
+function delRow(obj)
+{
+	obj = obj.parentNode.parentNode;
+	var index = obj.rowIndex;
+	alert('theTable.deleteRow(' + index + ')');
+	theTable.deleteRow(index);
+}
+
+
+function delTF()
+{
+	theTable.deleteTFoot();
+}
+
+function access(obj)
+{
+	var x = eval('theTable.' + obj);
+	alert(x.tagName);
+}
+
+function delTH()
+{
+	theTable.deleteTHead();
+}
+
+function getIndices(obj)
+{
+	while(obj.tagName != 'TD')
+	{
+		obj = obj.parentNode;
+	}
+	var printstring = '<SPAN TITLE="Click for more info">cellIndex is ' + obj.cellIndex;
+	var keepObj = obj;
+	while(obj.tagName != 'TR')
+	{
+		obj = obj.parentNode;
+	}
+	printstring += '<BR>rowIndex is ' + obj.rowIndex;
+	printstring += '<BR>sectionRowIndex is ' + obj.sectionRowIndex + '</SPAN>';
+	keepObj.innerHTML = printstring;
+	delBut(keepObj);
+}
+
+function inserttheCell(obj)
+{
+	obj = obj.parentNode;
+	var theRow = obj.parentNode.rowIndex;
+	var index = obj.getElementsByTagName('INPUT')[0].value;
+	if (isNaN(index)) index = 0;
+	alert('theTable.rows[' + theRow + '].insertCell(' + index + ')');
+	var a = theTable.rows[theRow].insertCell(index);
+	a.appendChild(New);
+	a.appendChild(document.createTextNode('Cell inserted'));
+	a.onclick = function () {getIndices(this)}
+}
+
+function inserttheRow(obj)
+{
+	obj = obj.parentNode;
+	appendObject = obj.parentNode.parentNode;
+	var index = obj.getElementsByTagName('INPUT')[0].value;
+	if (isNaN(index)) index = 0;
+	alert(appendObject.tagName + '.insertRow(' + index + ')');
+	var a = appendObject.insertRow(index);
+	var b = a.appendChild(theCell.cloneNode(true));
+	b.firstChild.onclick = function () {inserttheCell(this)}
+	b.lastChild.onclick = function() {delRow(this)}
+	b.appendChild(New);
+}
+
+// -->
+</SCRIPT>
+<STYLE>
+table {margin-left: 10%:}
+input {width: 30px;
+	height: 17px;
+	font: 12px verdana;
+	font-weight: 600
+}
+button {width: 100px;}
+tr {vertical-align: top;}
+td span {
+	text-decoration: underline;
+	cursor: pointer;
+	cursor: hand;
+}
+</STYLE>
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF"
+	onLoad="if (parent.erin) parent.erin('tablefun');init()"
+	onUnload="if (parent.eruit) parent.eruit('tablefun')">
+
+<H2>Fun with tables</H2>
+
+<SCRIPT LANGUAGE="JavaScript" TYPE="text/javascript">
+<!--
+if (self.lastMod) document.write(lastMod());
+// -->
+</SCRIPT>
+<DIV CLASS="compat">
+<LI>This is a
+<A HREF="browsers.html#ver5"
+	onMouseOver="parent.over('browsers')"
+	onMouseOut="parent.uit('browsers')">Version 5</A> script.</LI>
+</DIV>
+<P CLASS=hr>&nbsp;</P>
+
+<P CLASS="intro">This page contains some tests to create and insert TRs, TDs, THEADs
+and much more into tables.</P>
+
+<P ID="toc"></P>
+<P>Unfortunately this page is not yet ready. I nonetheless put it online because I refer to
+it in the 
+<A HREF="version5.html" onMouseOver="parent.over('methprop')"
+	onMouseOut="parent.uit('methprop')">DOM Compatibility Table</A>.
+<BR>At the moment it's not a very clear page, I'll write some explanations later on.</P>
+
+<TABLE BORDER=1 CELLPADDING=10>
+	<CAPTION>This is the caption of the table</CAPTION>
+	<THEAD>
+		<TR>
+			<TD CLASS="header" COLSPAN=10>The THEAD<BR>
+			<SPAN>Insert TR</SPAN> <INPUT></TD>
+		</TR>
+		<TR>
+			<TD CLASS="ex"><SPAN>Click for more info</SPAN></TD>
+			<TD CLASS="ex"><SPAN>Click for more info</SPAN></TD>
+			<TD CLASS="ex"><SPAN>Click for more info</SPAN></TD>
+		</TR>
+	</THEAD>
+	<TBODY>
+		<TR>
+			<TD CLASS="header" COLSPAN=10>The TBODY<BR>
+			<SPAN>Insert TR</SPAN> <INPUT></TD>
+		</TR>
+		<TR>
+			<TD CLASS="ex"><SPAN>Click for more info</SPAN></TD>
+			<TD CLASS="ex"><SPAN>Click for more info</SPAN></TD>
+			<TD CLASS="ex"><SPAN>Click for more info</SPAN></TD>
+		</TR>
+		<TR>
+			<TD CLASS="ex"><SPAN>Click for more info</SPAN></TD>
+			<TD CLASS="ex"><SPAN>Click for more info</SPAN></TD>
+			<TD CLASS="ex"><SPAN>Click for more info</SPAN></TD>
+		</TR>
+	</TBODY>
+	<TFOOT>
+		<TR>
+			<TD CLASS="header" COLSPAN=10>The TFOOT<BR>
+			<SPAN>Insert TR</SPAN> <INPUT></TD>
+		</TR>
+		<TR>
+			<TD CLASS="ex"><SPAN>Click for more info</SPAN></TD>
+			<TD CLASS="ex"><SPAN>Click for more info</SPAN></TD>
+			<TD CLASS="ex"><SPAN>Click for more info</SPAN></TD>
+		</TR>
+	</TFOOT>
+</TABLE>
+
+<H3>Fun things to do</H3>
+
+<H5>Arrays</H5>
+
+<P><A HREF="javascript:theCells()" CLASS="page">Count cells</A><BR>
+<A HREF="javascript:theRows()" CLASS="page">Count rows</A><BR>
+<A HREF="javascript:theBodies()" CLASS="page">Count TBODies</A><BR>
+
+<H5>Accessing sections</H5>
+
+<P><A HREF="javascript:access('caption')" CLASS="page">Access caption</A><BR>
+<A HREF="javascript:access('tHead')" CLASS="page">Access THEAD</A><BR>
+<A HREF="javascript:access('tFoot')" CLASS="page">Access TFOOT</A></P>
+
+
+<H5>Deleting</H5>
+
+<P>Works in IE4+, NN6, Konqueror except:<BR>
+Konqueror crashes on deleteCaption()<BR>
+IE4 Mac doesn't know the TBodies array.</P>
+
+<P>TBodies not necessary except Konqueror with deleteRow().</P>
+
+<P><A HREF="javascript:delCap()" CLASS="page">Delete caption</A><BR>
+<A HREF="javascript:delCell()" CLASS="page">Delete cell</A><BR>
+<A HREF="javascript:delrow()" CLASS="page">Delete row</A><BR>
+<A HREF="javascript:delTF()" CLASS="page">Delete TFoot</A><BR>
+<A HREF="javascript:delTH()" CLASS="page">Delete THead</A><BR>
+</P>
+
+<H3>Build your own</H3>
+
+<TABLE ID="buildtable" BORDER=1>
+
+</TABLE>
+
+<P><A HREF="javascript:createIt('Caption')" CLASS="page">Create caption</A><BR>
+<A HREF="javascript:createIt('THead')" CLASS="page">Create THead</A><BR>
+<A HREF="javascript:createIt('TFoot')" CLASS="page">Create TFoot</A></P>
+
+<P><A HREF="javascript:inserttheRow()" CLASS="page">Insert Row</A><BR>
+<A HREF="javascript:inserttheCell()" CLASS="page">Insert Cell</A></P>
+
+
+<SCRIPT LANGUAGE="JavaScript" TYPE="text/javascript">
+<!--
+
+function createIt(obj)
+{
+	var x = document.getElementById('buildtable');
+	var y = eval('x.create'+obj+'()');
+	y.appendChild(document.createTextNode(obj + ' created'));
+}
+
+
+
+// -->
+</SCRIPT>
+
+
+<H4><A HREF="intro.html"
+	onMouseOver="parent.over('hoom')"
+	onMouseOut="parent.uit('hoom')">Home</A></H4>
+
+</BODY>
+</HTML>

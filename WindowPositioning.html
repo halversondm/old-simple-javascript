@@ -1,0 +1,42 @@
+<!--pop up a specific sized window at a specific location-->
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+         "http://www.w3.org/TR/html4/strict.dtd">
+
+<HTML>
+<HEAD>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+
+
+<SCRIPT type="text/javascript">
+<!-- Begin hiding JavaScript from older browsers
+
+function win(iHeight,iWidth,iLeft,iRight)
+{
+   MyNewWindow=window.open("","MyNewWindow","height="+iHeight+",width="+iWidth+",left="+iLeft+",top="+iRight);
+   MyNewWindow.document.write("<html><title>Windows!</title>");
+   MyNewWindow.document.write("<body bgcolor='white' onblur=window.close()>");
+   MyNewWindow.document.write("<center>Your page content goes here</center>");
+   MyNewWindow.document.write("</body></html><p>");
+   // --OR-- if you want to open an existing HTML page in the new window,
+   //        then replace all of the above lines with the following one-liner:
+   //window.open("_WindowPositioning.html","","height="+iHeight+",width="+iWidth+",left="+iLeft+",top="+iRight);
+}
+// End hiding JavaScript -->
+</script>
+
+</HEAD>
+
+
+<BODY>
+
+<form>
+   <input type="button" value="Open Window" onclick="win(200,180,90,70)">
+   <!--OR, instead of a button you can use an anchor, thus...
+   <a href="javascript:win(200,180,90,70)">My clickable link text goes here</a>
+     -->
+</form>
+
+</BODY>
+</HTML>
+

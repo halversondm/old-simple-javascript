@@ -1,0 +1,68 @@
+<!--continuous slide show with fade-out/fade-in effect-->
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+         "http://www.w3.org/TR/html4/strict.dtd">
+
+<HTML>
+<HEAD>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+
+
+<SCRIPT type="text/javascript">
+<!-- Begin hiding JavaScript from older browsers --
+
+
+var slideShowSpeed = 2000;  // slideshow speed (milliseconds)
+var crossFadeDuration = 3;  // crossfade duration (seconds)
+var Pic = new Array();      // image files array
+    Pic[0] = 'SlideShowWithFade1.jpg'
+    Pic[1] = 'SlideShowWithFade2.jpg'
+    Pic[2] = 'SlideShowWithFade3.jpg'
+    Pic[3] = 'SlideShowWithFade4.jpg'
+    Pic[4] = 'SlideShowWithFade5.jpg'
+
+var tt;
+var jj = 0;
+var pp = Pic.length;
+var preLoad = new Array();
+for (ii = 0; ii < pp; ++ii)
+{
+  preLoad[ii] = new Image();
+  preLoad[ii].src = Pic[ii];
+}
+
+function runSlideShow()
+{
+  if (document.all)
+  {
+    document.images.SlideShow.style.filter="blendTrans(duration=2)";
+    document.images.SlideShow.style.filter="blendTrans(duration=crossFadeDuration)";
+    document.images.SlideShow.filters.blendTrans.Apply();
+  }
+  document.images.SlideShow.src = preLoad[jj].src;
+  if (document.all)
+  {
+    document.images.SlideShow.filters.blendTrans.Play();
+  }
+  jj = jj + 1;
+  if (jj > (pp - 1))
+      jj = 0;
+  tt = setTimeout('runSlideShow()', slideShowSpeed);
+}
+//-- End hiding JavaScript from older browsers -->
+</SCRIPT>
+</HEAD>
+
+<BODY onLoad="runSlideShow()">
+
+<table border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td id="VU" height=150 width=150>
+      <img src="SlideShowWithFade1.jpg" name='SlideShow' width=150 height=150>
+    </td>
+  </tr>
+</table>
+
+</BODY>
+</HTML>
+

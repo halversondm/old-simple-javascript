@@ -1,0 +1,42 @@
+<!--go to a web page whose link was selected via a dropdown list-->
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+         "http://www.w3.org/TR/html4/strict.dtd">
+
+<HTML>
+<HEAD>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+
+</HEAD>
+
+<BODY>
+
+<FORM name="MyOwnForm">
+  <SELECT name="MyOwnLinks"
+          onChange="window.location=document.MyOwnForm.MyOwnLinks.options[document.MyOwnForm.MyOwnLinks.selectedIndex].value">
+    <OPTION SELECTED value="javascript:void(0)">--Choose Link--
+    <OPTION value="./_LinkFromAList_1.html">Page 1
+    <OPTION value="./_LinkFromAList_2.html">Page 2
+    <OPTION value="./_LinkFromAList_3.html">Page 3
+  </SELECT>
+</FORM>
+
+</BODY>
+</HTML>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

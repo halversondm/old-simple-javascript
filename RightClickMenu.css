@@ -1,0 +1,50 @@
+
+DIV.men
+{
+    BORDER-RIGHT: 1px solid;
+    BORDER-TOP: white 1px solid;
+    LEFT: 10px;
+    VISIBILITY: hidden;
+    BORDER-LEFT: white 1px solid;
+    WIDTH: 120px;
+    BORDER-BOTTOM: 1px solid;
+    POSITION: absolute;
+    TOP: 10px;
+    HEIGHT: 48px;
+    BACKGROUND-COLOR: #D6D6D6;
+}
+TD.tdmenu
+{
+    CLEAR: left;
+    FONT-SIZE: 8pt;
+    CURSOR: hand;
+    FONT-FAMILY: tahoma;
+    HEIGHT: 16px;
+}
+TD.imgtd
+{
+    CLEAR: left;
+    VERTICAL-ALIGN: middle;
+    OVERFLOW: hidden;
+    WIDTH: 16px;
+    CURSOR: hand;
+    HEIGHT: 16px;
+    TEXT-ALIGN: center;
+    SPACING: 0px;
+    BACKGROUND-COLOR: #D6D6D6;
+}
+
+.icondimensions
+{
+    WIDTH: 12px;
+    HEIGHT: 12px;
+}
+IMG.emp
+{
+    VISIBILITY: hidden;
+}
+IMG.arr
+{
+    WIDTH: 6px;
+    HEIGHT: 9px;
+}

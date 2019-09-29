@@ -1,0 +1,80 @@
+<!--protect images on the web page from the right mouse (aka. copying)-->
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+         "http://www.w3.org/TR/html4/strict.dtd">
+
+<HTML>
+<HEAD>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+
+</HEAD>
+
+<BODY>
+
+   <img src='ProtectImage.jpg' width=70 height=100 border=0>
+   <P>The above image is protected from the use of the right mouse button.
+   <BR />Thus it cannot be copied/saved by someone browsing this page.
+
+<SCRIPT type="text/javascript">
+<!-- Begin hiding JavaScript from older browsers --
+
+<!--      NOTE . . . . . . .                                  -->
+<!--                                                          -->
+<!--      This code needs to stay as the last thing in <BODY> -->
+<!--                                                          -->
+<!--                                                          -->
+
+var clickmessage="Right click disabled on images!"
+
+function disableclick(e)
+{
+   if (document.all)
+   {
+     if (event.button==2||event.button==3)
+     {
+       if (event.srcElement.tagName=="IMG")
+       {
+         alert(clickmessage);
+         return false;
+       }
+     }
+   }
+   else
+   if (document.layers)
+   {
+     if (e.which == 3)
+     {
+       alert(clickmessage);
+       return false;
+     }
+   }
+   else
+   if (document.getElementById)
+   {
+     if (e.which==3&&e.target.tagName=="IMG")
+     {
+       alert(clickmessage)
+       return false
+     }
+   }
+}
+
+function associateimages()
+{
+   for(ii=0; ii<document.images.length; ++ii)
+       document.images[ii].onmousedown=disableclick;
+}
+
+if (document.all)
+    document.onmousedown=disableclick
+else
+if (document.getElementById)
+    document.onmouseup=disableclick
+else
+if (document.layers)
+    associateimages()
+//-- End hiding JavaScript from older browsers -->
+</SCRIPT>
+
+</BODY>
+</HTML>

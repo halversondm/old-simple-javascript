@@ -1,0 +1,60 @@
+<!--make text blink AND have it change color each time it blinks-->
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+         "http://www.w3.org/TR/html4/strict.dtd">
+
+<HTML>
+<HEAD>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+
+</HEAD>
+
+
+<BODY>
+<SCRIPT type="text/javascript">
+<!-- Begin hiding JavaScript from older browsers --
+
+function initArray()
+{
+   this.length = initArray.arguments.length;
+   for (ii = 0; ii < this.length; ++ii)
+   {
+      this[ii] = initArray.arguments[ii];
+   }
+}
+
+var ctext = "Watch me change color as I blink!";
+var speed = 1000;
+var x = 0;
+var color = new initArray("red","blue","green","black");
+if(navigator.appName == "Netscape")
+{
+   document.write('<layer id="c"><center>'+ctext+'</center></layer><br>');
+}
+if (navigator.appVersion.indexOf("MSIE") != -1)
+{
+   document.write('<div id="c"><h1><center>'+ctext+'</center></h1></div>');
+}
+
+function chcolor()
+{
+   if(navigator.appName == "Netscape")
+   {
+     document.c.document.write('<h1><center><font color="'+color[x]);
+     document.c.document.write('">'+ctext+'</font></center></h1>');
+     document.c.document.close();
+   }
+   else
+   if (navigator.appVersion.indexOf("MSIE") != -1)
+   {
+     document.all.c.style.color = color[x];
+   }
+   (x < color.length-1) ? x++ : x = 0;
+}
+
+setInterval("chcolor()",1000);
+//-- End hiding JavaScript from older browsers -->
+</SCRIPT>
+
+</BODY>
+</HTML>

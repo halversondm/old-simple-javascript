@@ -1,0 +1,63 @@
+<!--sort the given text delimited by blank spaces-->
+<!--Note that the text can have carriage returns and/or line feeds-->
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+         "http://www.w3.org/TR/html4/strict.dtd">
+
+<HTML>
+<HEAD>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+
+</HEAD>
+
+
+<BODY>
+
+<form method="POST" name="sorter">
+  <table border="0" cellspacing="5" cellpadding="0" width="100%">
+    <tr>
+      <td width="100%"><div align="center"><center><p>
+
+        <SCRIPT type="text/javascript">
+        <!-- Begin hiding JavaScript from older browsers --
+
+        function sortit(a,b)
+        {
+           return(a-b);
+        }
+
+        function sortvalues(param)
+        {
+           if (window.print||(document.images&&!document.all))
+           {
+              var inputvalues=document.sorter.MyTextAreaToSort.value.split(" ");
+              if (param==0)
+                  inputvalues.sort();
+              else
+                  inputvalues.sort(sortit);
+              document.sorter.MyTextAreaToSort.value='';
+              for (ii=0; ii<inputvalues.length-1; ++ii)
+              {
+                 document.sorter.MyTextAreaToSort.value=document.sorter.MyTextAreaToSort.value+inputvalues[ii]+" ";
+              }
+              document.sorter.MyTextAreaToSort.value+=inputvalues[inputvalues.length-1];
+           }
+           else
+           {
+              alert("You need NS 3+ or IE 5+ to use this program!");
+           }
+        }
+        //-- End hiding JavaScript from older browsers -->
+        </script>
+
+        <textarea rows="10" name="MyTextAreaToSort" cols="75" wrap="virtual"></textarea><br>
+        <input type="button" value="Sort text alphabetically" name="B4" onClick="sortvalues(0)"> <input
+               type="button" value="Sort text numerically" name="B5" onClick="sortvalues(1)"> <input
+               type="reset" value="Clear Text Area" name="B6">
+      </td>
+    </tr>
+  </table>
+</form>
+
+</BODY>
+</HTML>

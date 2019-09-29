@@ -1,0 +1,45 @@
+<!--detect which plug-in's are installed on the PC of the browser-->
+<!--of the web page. Note that a special separate JavaScript-->
+<!--file (called plugins.js) is needed. It does the actual-->
+<!--detection and returns a list of installed plug in's-->
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+         "http://www.w3.org/TR/html4/strict.dtd">
+
+<HTML>
+<HEAD>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+
+<!--the use of a separate JS file is needed, so declare it-->
+<SCRIPT type="text/javascript" src="plugins.js"></SCRIPT>
+
+<SCRIPT type="text/javascript">
+<!-- Begin hiding JavaScript from older browsers --
+
+if (pluginlist.indexOf("Windows Media Player")!=-1)
+    alert("You have Windows Media Player installed!");
+if (pluginlist.indexOf("Flash")!=-1)
+    alert("You have Flash installed!");
+if (pluginlist.indexOf("Java")!=-1)
+    alert("You have Java installed!");
+if (pluginlist.indexOf("Shockwave")!=-1)
+    alert("You have Shockwave installed!");
+if (pluginlist.indexOf("RealPlayer")!=-1)
+    alert("You have RealPlayer installed!");
+if (pluginlist.indexOf("QuickTime")!=-1)
+    alert("You have QuickTime installed!");
+if (pluginlist.indexOf("Acrobat Reader")!=-1)
+    alert("You have Acrobat Reader installed!");
+if (pluginlist.indexOf("SVG Viewer")!=-1)
+    alert("You have SVG Viewer installed!");
+
+//-- End hiding JavaScript from older browsers -->
+</SCRIPT>
+</HEAD>
+
+<BODY>
+
+Now you have seen which Plug-Ins are installed on this PC
+
+</BODY>
+</HTML>

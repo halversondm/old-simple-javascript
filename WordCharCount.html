@@ -1,0 +1,77 @@
+<!--count number of words, and count number of characters,-->
+<!--in the given text.-->
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+         "http://www.w3.org/TR/html4/strict.dtd">
+
+<HTML>
+<HEAD>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+
+
+<SCRIPT type="text/javascript">
+<!-- Begin hiding JavaScript from older browsers --
+
+// The blank space is the word delimiter. All other special chars are ignored
+function countWords()
+{
+   var formcontent=document.MyFormObjectWords.MyTextAreaObj.value
+   formcontent=formcontent.split(" ")
+   document.MyFormObjectWords.MyWordCountButton.value=formcontent.length
+}
+
+function CountChars(MyDocumentObj)
+{
+   formcontent=MyDocumentObj.form.charcount.value
+   MyDocumentObj.form.MyCharCountButton.value=formcontent.length
+}
+//-- End hiding JavaScript from older browsers -->
+</SCRIPT>
+</HEAD>
+
+<BODY>
+
+<form method="POST" name="MyFormObjectWords">
+
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td width="100%">
+        <textarea rows="12" name="MyTextAreaObj" cols="60" wrap="virtual"
+                  defaultValue="">
+        </textarea>
+      </td>
+    </tr>
+    <tr>
+      <td width="100%">
+         <div align="right"><p><input type="button" value="Calculate Words"
+             onClick="countWords()"> <input type="text" name="MyWordCountButton"
+             size="20"></p>
+      </td>
+    </tr>
+  </table>
+</form>
+
+
+<!-- send the document object when call the word count method -->
+<form method="POST" name="MyFormObjectChars">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td width="100%">
+        <textarea rows="12" name="charcount" cols="60" wrap="virtual"
+                  DefaultValue="">
+        </textarea>
+      </td>
+    </tr>
+    <tr>
+      <td width="100%">
+        <div align="right"><p><input type="button" value="Calculate Characters"
+             onClick="CountChars(this)"> <input type="text" name="MyCharCountButton"
+             size="20"></p>
+      </td>
+    </tr>
+  </table>
+</form>
+
+
+</BODY>
+</HTML>

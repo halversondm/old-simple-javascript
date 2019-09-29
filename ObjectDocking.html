@@ -1,0 +1,152 @@
+<!--Show how can make some page object 'dockable'. That is, the-->
+<!--object remains visible on the screen even when scrolled-->
+<!--see http://dynamicdrive.com/dynamicindex17/dockcontent.htm-->
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+         "http://www.w3.org/TR/html4/strict.dtd">
+
+<HTML>
+<HEAD>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+
+
+<SCRIPT type="text/javascript">
+<!-- Begin hiding JavaScript from older browsers --
+
+var offsetfromedge=0      // offset from window edge when content is "docked"
+var dockarray=new Array() // array to cache dockit instances
+var dkclear=new Array()   // array to cache corresponding clearinterval pointers
+
+function dockit(el, duration)
+{
+   if (!document.all)
+       return;
+   this.source=document.all ? document.all[el] : document.getElementById(el);
+   this.source.height=this.source.offsetHeight;
+   this.docheight=document.body.clientHeight;
+   this.duration=duration;
+   this.pagetop=0;
+   this.elementoffset=this.getOffsetY();
+   dockarray[dockarray.length]=this;
+   var pointer=eval(dockarray.length-1);
+   var dynexpress='dkclear['+pointer
+        +']=setInterval("dockornot(dockarray['
+        +pointer+'])",100);';
+   dynexpress=(this.duration>0)? dynexpress
+        +'setTimeout("clearInterval(dkclear['
+        + pointer+']); dockarray['+pointer
+        + '].source.style.top=0", duration*1000)' : dynexpress;
+   eval(dynexpress);
+}
+
+dockit.prototype.getOffsetY=function()
+{
+   var totaloffset=this.source.offsetTop;
+   var parentEl=this.source.offsetParent;
+   while (parentEl!=null)
+   {
+      totaloffset+=parentEl.offsetTop;
+      parentEl=parentEl.offsetParent;
+   }
+   return totaloffset;
+}
+
+function dockornot(obj)
+{
+   obj.pagetop=document.body.scrollTop;
+   if (obj.pagetop>obj.elementoffset)      // detect upper offset
+       obj.source.style.top=obj.pagetop-obj.elementoffset+offsetfromedge;
+   else
+   if (obj.pagetop+obj.docheight<obj.elementoffset
+           + parseInt(obj.source.height) ) // detect lower offset
+       obj.source.style.top=obj.pagetop
+           + obj.docheight-obj.source.height-obj.elementoffset
+           - offsetfromedge;
+   else
+       obj.source.style.top=0;
+}
+
+if (document.all)
+document.write('<style>.dockclass{position:relative;}</style>')
+//-- End hiding JavaScript from older browsers -->
+</SCRIPT>
+</HEAD>
+
+<BODY>
+
+  This is just other stuff on the page that is static.<BR />
+  It is a bunch of lines just so you can scroll the   <BR />
+  page and watch the dockable object move.            <BR />
+  So, have fun..........                              <BR />
+  Line #01                                            <BR />
+  Line #02                                            <BR />
+  Line #03                                            <BR />
+  Line #04                                            <BR />
+  Line #05                                            <BR />
+  Line #06                                            <BR />
+  Line #07                                            <BR />
+  Line #08                                            <BR />
+  Line #09                                            <BR />
+  Line #10                                            <BR />
+  Line #11                                            <BR />
+  Line #12                                            <BR />
+  Line #13                                            <BR />
+  Line #14                                            <BR />
+  Line #15                                            <BR />
+  Line #16                                            <BR />
+  Line #17                                            <BR />
+  Line #18                                            <BR />
+  Line #19                                            <BR />
+  Line #20                                            <BR />
+  Line #21                                            <BR />
+  Line #22                                            <BR />
+  Line #23                                            <BR />
+  Line #24                                            <BR />
+  Line #25                                            <BR />
+  Line #26                                            <BR />
+  Line #27                                            <BR />
+  Line #28                                            <BR />
+  Line #29                                            <BR />
+  Line #30                                            <BR />
+  <BR />
+  <BR />
+
+  <!--NOTE TO LARRY:  the table seems to dock better than the image does -- ?????? -->
+
+  <!--docked table-->
+  <table id="MyDockedItem_0" class="dockclass" bgcolor="#E8E8FF" ALIGN="center">
+    <tr><td>This table is docked.<BR />It's small with a color background.</td></tr>
+  </table>
+
+  Docked image: <img src="ObjectDocking.jpg" id="MyDockedItem_1" class="dockclass"
+                HEIGHT="100" WIDTH="200">
+
+  <BR />
+  <BR />
+  Line #31                                            <BR />
+  Line #32                                            <BR />
+  Line #33                                            <BR />
+  Line #34                                            <BR />
+  Line #35                                            <BR />
+  Line #36                                            <BR />
+  Line #37                                            <BR />
+  Line #38                                            <BR />
+  Line #39                                            <BR />
+  Line #40                                            <BR />
+  Line #41                                            <BR />
+  Line #42                                            <BR />
+  Line #43                                            <BR />
+  Line #44                                            <BR />
+  Line #45                                            <BR />
+  Line #46                                            <BR />
+
+<SCRIPT type="text/javascript">
+<!-- Begin hiding JavaScript from older browsers --
+  var dock0=new dockit("MyDockedItem_0",  0);
+  var dock1=new dockit("MyDockedItem_1", 10);
+//-- End hiding JavaScript from older browsers -->
+</SCRIPT>
+
+
+</BODY>
+</HTML>

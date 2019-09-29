@@ -1,0 +1,233 @@
+<!--Zoom the fade several text messages, then execute another page-->
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+         "http://www.w3.org/TR/html4/strict.dtd">
+
+<HTML>
+<HEAD>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+
+
+<style type="text/css">
+   #myZoomingDiv{position:absolute; left:0; top:170; width:100%;
+   text-align:center; visibility:hidden}
+</style>
+
+<script type="text/javascript">
+<!-- Begin hiding JavaScript from older browsers --
+
+// default browser check
+function checkBrowser()
+{
+   this.ver=navigator.appVersion;
+   this.dom=document.getElementById?1:0;
+   this.ie5=(this.ver.indexOf("MSIE 5")>-1 && this.dom)?1:0;
+   this.ie5=(this.ver.indexOf("MSIE 6")>-1 && this.dom)?1:0;
+   this.ie4=(document.all && !this.dom)?1:0;
+   this.ns5=(this.dom && parseInt(this.ver) >= 5) ?1:0;
+   this.ns4=(document.layers && !this.dom)?1:0;
+   this.bw=(this.ie5 || this.ie4 || this.ns4 || this.ns5);
+   return this;
+}
+
+bw=new checkBrowser()
+{
+   // ============================================================
+   // =====  Note to the JavaScript developer:
+   // =====
+   // =====  The below values can be adjusted as desired
+   // =====
+   // ============================================================
+
+   // Text Messages to show, one at a time
+   zText=new Array('Hello',
+                   'to',
+                   'you',
+                   'welcome to here'
+                  );
+
+   // the first color will be the color that the text is when it zooms
+   zColor=new Array('#202020',
+                    '#424242',
+                    '#8E8E8E',
+                    '#C2C2C2',
+                    '#E8E8E8'
+                   );
+
+   var zEndSize=70;    // fontsize in px for the zoom to end at
+   var zSpeed=50;      // zoom speed
+   var zAddSize=5;     // Px to add to the fontsize on each interval
+   var zFadeSpeed=70;  // color change/fade speed
+   var zFont='Arial Black,Arial,Helvetica'; // font(s) to use
+   var zHideWait=200;  // time to wait before hiding
+   var zStartSize=10;  // font size to start at
+   var zHide=true;     // hide when its done: true or false?
+
+   var zEndCode="location.href='_ZoomingTextNext.html'";
+                       // code to execute when zoom and fade done
+                       // NOTE: this will NOT execute if zHide=false
+
+   // remove this if you don't wan't it to start right away but instead
+   // want to wait until some user action occurs (e.g. a click)
+   // To have a link to this code, use something such as:
+   // <a href="#" onclick="fadeInit()">Click to Zoomtext</a>
+   onload=zoomInit;
+}
+
+//Object functions
+function makeZoomObj(obj,font,size,endsize,color,text,zspeed,
+                     fadespeed,addsize,hide,hidewait,endcode)
+{
+   this.css=bw.dom
+       ? document.getElementById(obj).style
+          : bw.ie4
+          ? document.all[obj].style
+          : bw.ns4
+          ? document.layers[obj]
+          : 0;
+   this.writeref=bw.dom
+       ? document.getElementById(obj)
+         : bw.ie4
+         ? document.all[obj]
+         : bw.ns4
+         ? document.layers[obj].document
+         : 0;
+   this.zoomWrite=b_zoomWrite;
+   this.zoomIt=b_zoomIt;
+   this.fadeIt=b_fadeIt;
+   this.zoomFade=b_zoomFade;
+   this.font=font;
+   this.color=new Array();
+   this.color=eval(color);
+   this.text=new Array();
+   this.text=eval(text);
+   this.zspeed=zspeed;
+   this.fadespeed=fadespeed;
+   this.addsize=addsize;
+   this.endcode=endcode
+   this.hide=hide;
+   this.hidewait=hidewait;
+   this.size=size;
+   this.startsize=size;
+   this.endsize=endsize
+   if(size<endsize)
+   {
+      this.way="<";
+      this.addsize=this.addsize;
+   }
+   else
+   {
+      this.way=">";
+      this.addsize=-this.addsize;
+   }
+   if(bw.dom || bw.ie4)
+   {  // set style properties
+      this.css.fontFamily=this.font;
+      this.css.fontSize=this.size;
+      this.css.color=this.color[0]
+   }
+   this.obj = obj + "Object";
+   eval(this.obj + "=this");
+   return this;
+}
+
+function b_zoomFade(num)
+{
+   if(num<this.text.length)
+   {
+      this.size=this.startsize;
+      this.zoomIt(num,'this.zoomFade('+(num+1)+')');
+   }
+   else
+   if(num==this.text.length)
+      this.fadeIt(0,'this.zoomFade('+(num+1)+')');
+   else
+   if(this.hide)
+      setTimeout(this.obj+".css.visibility='hidden'; eval("
+                 +this.obj+".endcode)",this.hidewait);
+}
+
+function b_zoomWrite(num,cnum)
+{
+   if(bw.ns4)
+   {
+      this.writeref.write('<span style="text-align:center; font-size:'
+                          +this.size+'px; font-family:'+this.font+'; color:'
+                          +this.color[cnum]+'">'+this.text[num]+'</span>');
+                this.writeref.close()
+        }
+        else
+        if(bw.dom)
+        { // M10 workaround, adding span to change color in.
+           spantag=document.createElement("SPAN");
+           spantag.id=this.obj+"span";
+           this.writeref.replaceChild(spantag,this.writeref.childNodes[0]);
+           this.writeref.childNodes[0].appendChild(document.createTextNode(""));
+           this.writeref.childNodes[0].replaceChild(document.createTextNode(
+                   this.text[num]),this.writeref.childNodes[0].childNodes[0]);
+        }
+        else
+        if(bw.ie4)
+           this.writeref.innerHTML=this.text[num];
+}
+
+function b_zoomIt(num,fn)
+{
+   if(eval(this.size+this.way+this.endsize))
+   {
+      if(this.size==this.startsize || bw.ns4)
+         this.zoomWrite(num,0);
+      if(bw.dom || bw.ie4)
+         this.css.fontSize=this.size;
+      this.size=this.size+this.addsize
+      setTimeout(this.obj+".zoomIt("+num+",'"+fn+"')",this.zspeed);
+   }
+   else
+      eval(fn);
+}
+
+function b_fadeIt(num,fn)
+{
+   if(num<this.color.length)
+   {
+     if(bw.ns4)
+        this.zoomWrite(this.text.length-1,num)
+     else
+     {
+        obj=bw.ie4?this.css:document.getElementById(this.obj+"span").style;
+        obj.color=this.color[num];
+     }
+     num++;
+     setTimeout(this.obj+".fadeIt("+num+",'"+fn+"')",this.fadespeed)
+   }
+   else
+      eval(fn);
+}
+
+// init object, show it, start zoom
+function zoomInit()
+{
+   if(bw.bw)
+   {
+      oZoom=new makeZoomObj('myZoomingDiv',  // ID of HTML object to use
+                            zFont,zStartSize,zEndSize,
+                            'zColor',   // name of array of colors to use
+                            'zText',    // name of array of text msgs to show
+                            zSpeed,zFadeSpeed,zAddSize,zHide,zHideWait,zEndCode);
+      oZoom.zoomFade(0)
+      oZoom.css.visibility='visible'
+   }
+}
+//-- End hiding JavaScript from older browsers -->
+</SCRIPT>
+</HEAD>
+
+<BODY>
+
+  <div id="MyZoomingDiv" align="center">
+    <!-- older browsers will not see this -->
+  </div>
+
+</BODY>
+</HTML>
+

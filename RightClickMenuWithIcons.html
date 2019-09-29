@@ -1,0 +1,67 @@
+<!--Develop your own right mouse button menus-->
+<!--This file requires the following companion files:-->
+<!--1. RightClickMenuWithIcons.css-->
+<!--2. RightClickMenuWithIcons.js-->
+<!--3. arrow__e.gif -->
+<!--4. arrow__r.gif -->
+<!--5. arrow__rw.gif-->
+<!--6. pelle.gif    -->
+<!--7. putki.gif    -->
+<!--8. spacer.gif   -->
+<!--9. spacer__b.gif-->
+<!--10.telkku.gif   -->
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+         "http://www.w3.org/TR/html4/strict.dtd">
+
+<HTML>
+<HEAD>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+
+  <LINK HREF="RightClickMenuWithIcons.css" type="text/css" REL="stylesheet">
+
+<SCRIPT type="text/javascript">
+<!-- Begin hiding JavaScript from older browsers --
+
+var iecheck=document.all&&document.getElementById
+if (iecheck)
+{
+   document.write('<script type="text/javascript" src="RightClickMenuWithIcons.js"><\/script>')
+}
+//-- End hiding JavaScript from older browsers -->
+</SCRIPT>
+</HEAD>
+
+
+<BODY>
+
+<SCRIPT type="text/javascript">
+<!-- Begin hiding JavaScript from older browsers --
+/*
+N-level context menu- By Kari Hollo (kari.hollo@karvanaamat.com)
+Modified by JavaScript Kit (http://www.javascriptkit.com) for minor improvements
+Visit http://www.javascriptkit.com for this script. Keep this intact.
+*/
+
+if (iecheck)
+{
+   createMenus();
+   document.oncontextmenu=function()
+   {
+     showMenu(event);
+     return false;
+   }
+
+   document.onmouseup=function()
+   {
+      hideMenu(event);
+      return false;
+   }
+}
+//-- End hiding JavaScript from older browsers -->
+</SCRIPT>
+
+Right mouse anywhere on this page to see the menu available
+
+</BODY>
+</HTML>

@@ -1,0 +1,76 @@
+<!--spinning/rotating menu with links. Any of the links can be clicked-->
+<!--to jump to that web page. The screen space used by this menu is-->
+<!--very small, and, the users will absolutely LOVE clicking on it.-->
+<!--The menu itself can be customized for things such as the colors-->
+<!--and position and size and number of selections.-->
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+         "http://www.w3.org/TR/html4/strict.dtd">
+
+<HTML>
+<HEAD>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+
+<SCRIPT type="text/javascript" src="SpinMenu.js"></SCRIPT>
+</HEAD>
+
+
+<BODY>
+
+<SCRIPT type="text/javascript" type="text/javascript">
+<!-- Begin hiding JavaScript from older browsers --
+
+/*
+3D Spin Menu- By Petre Stefan (http://www.eyecon.ro)
+w/ changes by JK
+Visit JavaScript Kit (http://www.javascriptkit.com) for script
+Keep this notice intact!
+*/
+
+eye.isVertical = 0;                  // if it's vertical or horizontal [0|1]
+eye.x = 150;                         // x offset from point of insertion on page
+eye.y = 20;                          // y offset from point of insertion on page
+eye.w = 150;                         // item's width
+eye.h = 30;                          // height
+eye.r = 100;                         // menu's radius
+eye.v = 20;                          // velocity
+eye.s = 8;                           // scale in space (for 3D effect)
+eye.color = '#ffffff';               // normal text color
+eye.colorover = '#ffffff';           // mouseover text color
+eye.backgroundcolor = '#0099ff';     // normal background color
+eye.backgroundcolorover = '#990000'; // mouseover background color
+eye.bordercolor = '#000000';         // border color
+eye.fontsize = 12;                   // font size
+eye.fontfamily = 'Arial';            // font family
+
+if (document.getElementById)
+{
+   document.write('<div id="spinanchor" style="height:'+eval(eye.h+20)+'"></div>')
+   eye.anchor=document.getElementById('spinanchor')
+   eye.spinmenu();
+   eye.x+=getposOffset(eye.anchor, "left") //relatively position it
+   eye.y+=getposOffset(eye.anchor, "top")  //relatively position it
+
+   // ***********************************************************************
+   // ***   Note to Developer...
+   // ***
+   // ***   Alter the below as you need. First item of the two is what goes
+   // ***   on the web page menu, the second item is what is to link to.
+   // ***********************************************************************
+   eye.spinmenuitem("JavaScript Kit"          , "http://www.javascriptkit.com"                         );
+   eye.spinmenuitem("Free JavaScripts"        , "http://www.javascriptkit.com/cutpastejava.shtml"      );
+   eye.spinmenuitem("JS Tutorials"            , "http://www.javascriptkit.com/javaindex.shtml"         );
+   eye.spinmenuitem("Advanced JS Tutorials"   , "http://www.javascriptkit.com/javatutors/"             );
+   eye.spinmenuitem("DHTML/ CSS Tutorials"    , "http://www.javascriptkit.com/dhtmltutors/index.shtml" );
+   eye.spinmenuitem("Web building tutorials"  , "http://www.javascriptkit.com/howto/"                  );
+   eye.spinmenuitem("MSNBC"                   , "http://www.msn.com"                                   );
+   eye.spinmenuitem("CNN"                     , "http://www.cnn.com"                                   );
+   eye.spinmenuclose();
+}
+
+//-- End hiding JavaScript from older browsers -->
+</SCRIPT>
+
+
+</BODY>
+</HTML>

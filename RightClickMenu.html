@@ -1,0 +1,132 @@
+<!--Right mouse click to get a popup menu-->
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+         "http://www.w3.org/TR/html4/strict.dtd">
+
+<HTML>
+<HEAD>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+
+
+<SCRIPT type="text/javascript">
+<!-- Begin hiding JavaScript from older browsers --
+
+///////////////////////////////////////////////////////////////////////////////
+//   ..:: realMenu v1.27 ::..
+// copyright © jordan neill 2000
+// Script featured on JavaScript Kit (http://javascriptkit.com)
+//
+// change the menuItems array with your options and set the urls to link to
+//  use addMenuItem("Text to show", "Url To Link To"); to make an item
+//  use addMenuItem("Text", Url", "Img To Show"); to make an item with an image
+//  use addMenuItem(); to indicate a separator bar
+//  you can use html tags in the text, eg, <i>, <b> or <u>
+//
+// images used should be 16x16 transparent gifs
+///////////////////////////////////////////////////////////////////////////////
+
+ menuItems = new Array();
+ menuItemNum = 0;
+
+ function addMenuItem(text, url, img)
+ {
+  if(img) menuItems[menuItemNum] = new Array(text, url, img);
+  else if(text) menuItems[menuItemNum] = new Array(text, url);
+  else menuItems[menuItemNum] = new Array();
+  menuItemNum++;
+ }
+
+ menuWidth  = 148;  //menu width
+ menuHeight = 176;  //menu height
+ menuDelay  =  50;  //delay before menu appears
+ menuSpeed  =   8;  //speed which menu appears (lower=faster)
+ menuOffset =   2;  //offset of menu from mouse pointer
+
+ addMenuItem("MSNBC",
+             "http://www.msn.com");
+ addMenuItem("CNN",
+             "http://www.cnn.com");
+ addMenuItem();   // spacer between two menu items`
+ addMenuItem("Google Advanced Search",
+             "http://www.google.com/advanced_search?hl=en");
+ addMenuItem("Yahoo",
+             "http://www.yahoo.com/");
+ addMenuItem();   // spacer between two menu items`
+ addMenuItem("DST Systems, Inc.",
+             "http://www.dstsystems.com/");
+ addMenuItem("DST InfraStructure",
+             "http://infraweb/");
+
+ //////////////////////////////////////////////////////////////////////////////
+ // do not edit the code below, it is required for the menu to work correctly
+ //////////////////////////////////////////////////////////////////////////////
+
+ if(window.navigator.appName == "Microsoft Internet Explorer"
+ && window.navigator.appVersion.substring(window.navigator.appVersion.indexOf("MSIE") + 5,
+    window.navigator.appVersion.indexOf("MSIE") + 8) >= 5.5)
+  isIe = 1;
+ else
+  isIe = 0;
+
+ if(isIe)
+ {
+  menuContent = '<table id="rightMenu" width="0" height="0" cellspacing="0" cellpadding="0" style="font:menu;color:menutext;"><tr height="1"><td style="background:threedlightshadow" colspan="4"></td><td style="background:threeddarkshadow"></td></tr><tr height="1"><td style="background:threedlightshadow"></td><td style="background:threedhighlight" colspan="2"></td><td style="background:threedshadow"></td><td style="background:threeddarkshadow"></td></tr><tr height="10"><td style="background:threedlightshadow"></td><td style="background:threedhighlight"></td><td style="background:threedface"><table cellspacing="0" cellpadding="0" nowrap style="font:menu;color:menutext;cursor:default;">';
+  for(m=0;m<menuItems.length;m++)
+  {
+   if(menuItems[m][0] && menuItems[m][2])
+    menuContent += '<tr height="17" onMouseOver="this.style.background=\'highlight\';this.style.color=\'highlighttext\';" onMouseOut="this.style.background=\'threedface\';this.style.color=\'menutext\';" onClick="parent.window.location.href=\'' + menuItems[m][1] + '\'"><td style="background:threedface" width="1" nowrap></td><td width="21" nowrap><img src="' + menuItems[m][2] + '"></td><td nowrap>' + menuItems[m][0] + '</td><td width="21" nowrap></td><td style="background:threedface" width="1" nowrap></td></tr>';
+   else
+   if(menuItems[m][0])
+    menuContent += '<tr height="17" onMouseOver="this.style.background=\'highlight\';this.style.color=\'highlighttext\';" onMouseOut="this.style.background=\'threedface\';this.style.color=\'menutext\';" onClick="parent.window.location.href=\'' + menuItems[m][1] + '\'"><td style="background:threedface" width="1" nowrap></td><td width="21" nowrap></td><td nowrap>' + menuItems[m][0] + '</td><td width="21" nowrap></td><td style="background:threedface" width="1" nowrap></td></tr>';
+   else
+    menuContent += '<tr><td colspan="5" height="4"></td></tr><tr><td colspan="5"><table cellspacing="0"><tr><td width="2" height="1"></td><td width="0" height="1" style="background:threedshadow"></td><td width="2" height="1"></td></tr><tr><td width="2" height="1"></td><td width="100%" height="1" style="background:threedhighlight"></td><td width="2" height="1"></td></tr></table></td></tr><tr><td colspan="5" height="3"></td></tr>';
+  }
+  menuContent += '</table></td><td style="background:threedshadow"></td><td style="background:threeddarkshadow"></td></tr><tr height="1"><td style="background:threedlightshadow"></td><td style="background:threedhighlight"></td><td style="background:threedface"></td><td style="background:threedshadow"></td><td style="background:threeddarkshadow"></td></tr><tr height="1"><td style="background:threedlightshadow"></td><td style="background:threedshadow" colspan="3"></td><td style="background:threeddarkshadow"></td></tr><tr height="1"><td style="background:threeddarkshadow" colspan="5"></td></tr></table>';
+
+  menuPopup = window.createPopup();
+  menuPopup.document.body.innerHTML = menuContent;
+ }
+
+ function showMenu()
+ {
+  menuXPos = event.clientX + menuOffset;
+  menuYPos = event.clientY + menuOffset;
+
+  menuXIncrement = menuWidth / menuSpeed;
+  menuYIncrement = menuHeight / menuSpeed;
+
+  menuTimer = setTimeout("openMenu(0,0)", menuDelay);
+
+  return false;
+ }
+
+
+ function openMenu(height, width)
+ {
+  iHeight = height;
+  iWidth = width;
+
+  menuPopup.show(menuXPos, menuYPos, iWidth, iHeight, document.body);
+
+  if(iHeight < menuHeight)
+   menuTimer = setTimeout("openMenu(iHeight + menuYIncrement, "
+                          +"iWidth + menuXIncrement)", 1);
+  else
+   clearTimeout(menuTimer);
+ }
+
+
+ if(isIe) document.oncontextmenu = showMenu;
+
+//-- End hiding JavaScript from older browsers -->
+</SCRIPT>
+</HEAD>
+
+
+<BODY>
+
+Right mouse anywhere on the browser window to see a popup menu
+
+</BODY>
+</HTML>
+

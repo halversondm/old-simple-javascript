@@ -1,0 +1,35 @@
+<!--show ASCII code for a given character-->
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+         "http://www.w3.org/TR/html4/strict.dtd">
+
+<HTML>
+<HEAD>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+
+
+<SCRIPT type="text/javascript">
+<!-- Begin hiding JavaScript from older browsers --
+
+function showKeyCode()
+{
+  var character = document.characterCode.character.value.substring(0,1);
+  var code = document.characterCode.character.value.charCodeAt(0);
+  var msg = "The ASCII Decimal Key Code for the \""
+          + character+"\" character is "+code+".";
+  alert(msg);
+}
+//-- End hiding JavaScript from older browsers -->
+</SCRIPT>
+</HEAD>
+
+<BODY>
+
+<form name="characterCode">Type a character to see its ASCII code:
+  <input type="text"   name="character" size="15">
+  <input type="button" value="Show Key Code" onClick="showKeyCode();">
+</form>
+
+</BODY>
+</HTML>
+

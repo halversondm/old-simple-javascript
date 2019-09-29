@@ -1,0 +1,55 @@
+<!--validate a zip code that was entered into a text field-->
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+         "http://www.w3.org/TR/html4/strict.dtd">
+
+<HTML>
+<HEAD>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+
+
+<SCRIPT type="text/javascript">
+<!-- Begin hiding JavaScript from older browsers --
+
+function validateZIP(sZipValue)
+{
+   var valid = "0123456789-";
+   var hyphencount = 0;
+
+   if (sZipValue.length!=5 && sZipValue.length!=10)
+   {
+     alert("Zip Code entry should be either as a 5-digit entry (eg. 99999) or a Zip+4 entry (eg. 99999-9999)");
+     return false;
+   }
+   for (ii=0; ii < sZipValue.length; ++ii)
+   {
+      temp = "" + sZipValue.substring(ii, ii+1);
+      if (temp == "-")
+          hyphencount++;
+      if (valid.indexOf(temp) == "-1")
+      {
+         alert("Invalid characters in your zip code.  Please try again.");
+         return false;
+      }
+      if ((hyphencount > 1) || ((sZipValue.length==10) && ""+sZipValue.charAt(5)!="-"))
+      {
+         alert("The hyphen character should be used with a properly formatted Zip, such as '12345-6789'.");
+         return false;
+      }
+   }
+   return true;
+}
+
+//-- End hiding JavaScript from older browsers -->
+</SCRIPT>
+</HEAD>
+
+<BODY>
+
+<form name=zip onSubmit="return validateZIP(this.zip.value)">
+   Zip: <input type=text size=30 name=zip>
+   <input type=submit value="Submit">
+</form>
+
+</BODY>
+</HTML>

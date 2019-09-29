@@ -1,0 +1,43 @@
+<!--bring up the 'Add to Favorites' list-->
+<!--Also demonstrates several uses of "document." features-->
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+         "http://www.w3.org/TR/html4/strict.dtd">
+
+<HTML>
+<HEAD>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+
+<SCRIPT type="text/javascript">
+<!-- Begin hiding JavaScript from older browsers --
+
+function addbookmark(newWebSiteURL,newWebSiteTitle)
+{
+  if (document.all)  // if true then it can only be Internet Explorer
+      window.external.AddFavorite(newWebSiteURL,newWebSiteTitle);
+  else
+  if (document.layers) // if true then it can only be Netscape Navigator
+      return;  // basically a do-nothing statement
+}
+//-- End hiding JavaScript from older browsers -->
+</SCRIPT>
+</HEAD>
+
+<BODY>
+
+<SCRIPT type="text/javascript">
+<!-- Begin hiding JavaScript from older browsers --
+
+if (document.getElementById)
+    alert("This browser is DOM compliant!");
+
+//-- End hiding JavaScript from older browsers -->
+</SCRIPT>
+
+<a href="javascript:addbookmark('http://www.dstsystems.com',
+   'Welcome to DST')">
+   <b>Add DST to your favorites list</a>
+
+</BODY>
+</HTML>
+

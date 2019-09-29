@@ -1,0 +1,50 @@
+<!--replace all occurences of a case-sensitive character with another character-->
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+         "http://www.w3.org/TR/html4/strict.dtd">
+
+<HTML>
+<HEAD>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+
+
+<SCRIPT type="text/javascript">
+<!-- Begin hiding JavaScript from older browsers --
+
+function replaceChars(MyObj,oldChar,newChar)
+{
+   temp = "" + MyObj.value; // temporary holder
+   while (temp.indexOf(oldChar)>-1)
+   {
+     pos= temp.indexOf(oldChar);
+     temp = "" + (temp.substring(0, pos) + newChar
+            + temp.substring((pos + oldChar.length), temp.length));
+   }
+   <!--put converted string back into object-->
+   MyObj.value = temp;
+}
+//-- End hiding JavaScript from older browsers -->
+</SCRIPT>
+</HEAD>
+
+<BODY>
+
+<form name="MyObjectWithText">
+  <input type=text   name=text   value="initial value is: abcdabcd (replace A with Z)" size=80> <br />
+  <input type=button name=action value="Replace Chars!"
+         onClick="replaceChars(document.MyObjectWithText.text,'a','z');">
+</form>
+
+Enter your text then click the REPLACE CHARS button and watch what happens...
+
+<!--
+<p>--OR--
+<form name="MyObjectWithText">
+  <input type=text name=text size=40 value="abcdabcd" onBlur="replaceChars(this,'a','z');">
+</form>
+
+Enter your text then click anywhere outside the text box (ie. make the text box
+lose focus) and watch it go...
+-->
+</BODY>
+</HTML>

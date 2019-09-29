@@ -1,0 +1,41 @@
+<!--go to a web page selected from a drop down list-->
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+         "http://www.w3.org/TR/html4/strict.dtd">
+
+<HTML>
+<HEAD>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+
+
+<SCRIPT type="text/javascript">
+<!-- Begin hiding JavaScript from older browsers --
+
+function formHandler()
+{
+   var URL = document.MyForm.site.options[document.MyForm.site.selectedIndex].value;
+   window.location.href = URL;
+}
+
+//-- End hiding JavaScript from older browsers -->
+</SCRIPT>
+</HEAD>
+
+<BODY>
+
+<form name="MyForm">
+  <select name="site" size=1>
+    <option value="">Go to....
+    <option value="http://www.yahoo.com">Yahoo
+    <option value="http://www.Google.com">Google
+    <option value="http://www.metacrawler.com">Metacrawler
+    <option value="http://www.altavista.digital.com">Altavista
+    <option value="http://www.webcrawler.com">Webcrawler
+    <option value="http://www.lycos.com">Lycos
+    <option value="http://javascript.internet.com">JavaScript Source
+  </select>
+  <input type=button value="Go!" onClick="javascript:formHandler()">
+</form>
+
+</BODY>
+</HTML>

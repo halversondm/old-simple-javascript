@@ -1,0 +1,86 @@
+<!--auto tab between fixed-length fields (such as SSN or Phone)-->
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+         "http://www.w3.org/TR/html4/strict.dtd">
+
+<HTML>
+<HEAD>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+
+
+<SCRIPT type="text/javascript">
+<!-- Begin hiding JavaScript from older browsers --
+
+var isNN = (navigator.appName.indexOf("Netscape")!=-1);
+
+function putFocus(formIdx, elementIdx) // element# is zero-based
+{
+  if (document.forms.length > 0)
+  {
+    document.forms[formIdx].elements[elementIdx].focus();
+    if (document.forms[formIdx].elements[elementIdx].type.indexOf("text") != -1)
+    {
+      document.forms[formIdx].elements[elementIdx].select();
+    }
+  }
+}
+
+function autoTab(input,len, e)
+{
+   var keyCode = (isNN) ? e.which : e.keyCode;
+   var filter = (isNN) ? [0,8,9] : [0,8,9,16,17,18,37,38,39,40,46];
+   if(input.value.length >= len && !containsElement(filter,keyCode))
+   {
+     input.value = input.value.slice(0, len);
+     input.form[(getIndex(input)+1) % input.form.length].focus();
+   }
+
+   function containsElement(arr, ele)
+   {
+     var found = false, index = 0;
+     while(!found && index < arr.length)
+     {
+        if(arr[index] == ele)
+           found = true;
+        else
+           index++;
+     }
+     return found;
+   }
+
+   function getIndex(input)
+   {
+      var index = -1, ii = 0, found = false;
+      while (ii < input.form.length && index == -1)
+      {
+         if (input.form[ii] == input)
+             index = ii;
+         else
+             ii++;
+      }
+      return index;
+   }
+   return true;
+}
+//-- End hiding JavaScript from older browsers -->
+</SCRIPT>
+</HEAD>
+
+<BODY ONLOAD="putFocus(0,0);">
+
+Type in SSN -- note that it will automatically tab to the next box for you<BR />
+
+<form>
+ <table>
+  <tr>
+   <td>Social Security Number : <BR />
+    <small><input onKeyUp="return autoTab(this, 3, event);" size="4" maxlength="3"></small> -
+    <small><input onKeyUp="return autoTab(this, 2, event);" size="3" maxlength="2"></small> -
+    <small><input onKeyUp="return autoTab(this, 4, event);" size="5" maxlength="4"></small>
+   </td>
+  </tr>
+ </table>
+</form>
+
+</BODY>
+</HTML>

@@ -1,0 +1,382 @@
+<HTML>
+<HEAD>
+
+<SCRIPT language="JavaScript">
+<!-- Begin hiding JavaScript from older browsers --
+
+function suycDateDiff( start, end, interval, rounding )
+{
+    var iOut = 0;
+
+    // Create 2 error messages, 1 for each argument.
+    var startMsg = "Check the Start Date and End Date\n"
+        startMsg += "must be a valid date format.\n\n"
+        startMsg += "Please try again." ;
+		
+    var intervalMsg = "Sorry the dateAdd function only accepts\n"
+        intervalMsg += "d, h, m OR s intervals.\n\n"
+        intervalMsg += "Please try again." ;
+
+    var bufferA = Date.parse( start ) ;
+    var bufferB = Date.parse( end ) ;
+    	
+    // check that the start parameter is a valid Date.
+    if ( isNaN (bufferA) || isNaN (bufferB) )
+    {
+        alert( startMsg ) ;
+        return null ;
+    }
+	
+    // check that an interval parameter was not numeric.
+    if ( interval.charAt == 'undefined' )
+    {
+        // the user specified an incorrect interval, handle the error.
+        alert( intervalMsg ) ;
+        return null ;
+    }
+
+    var number = bufferB-bufferA ;
+
+    // what kind of add to do?
+    switch (interval.charAt(0))
+    {
+        case 'd': case 'D':
+            iOut = parseInt(number / 86400000) ;
+            if(rounding) iOut += parseInt((number % 86400000)/43200001) ;
+            break ;
+        case 'h': case 'H':
+            iOut = parseInt(number / 3600000 ) ;
+            if(rounding) iOut += parseInt((number % 3600000)/1800001) ;
+            break ;
+        case 'm': case 'M':
+            iOut = parseInt(number / 60000 ) ;
+            if(rounding) iOut += parseInt((number % 60000)/30001) ;
+            break ;
+        case 's': case 'S':
+            iOut = parseInt(number / 1000 ) ;
+            if(rounding) iOut += parseInt((number % 1000)/501) ;
+            break ;
+        default:
+        // If we get to here then the interval parameter
+        // didn't meet the d,h,m,s criteria.  Handle
+        // the error. 		
+        alert(intervalMsg) ;
+        return null ;
+    }
+
+    return iOut ;
+}
+
+// The presentDate function is called on when you
+// click on the button on the form.
+function presentDate(f)
+{
+    var ierr = 1 ;
+
+   // Verify whether the user wants to return only whole
+   // intervals or intervals rounded to the nearest number
+   // of interval.
+   var roundDays = f.chkWholeDays.checked ;
+
+   // Verify that the user entered something in the
+   // Start Date input box.
+    if(f.startDate.value != '')
+    {
+        if(!isNaN(Date.parse( f.startDate.value )))
+        {
+            var s = new Date(Date.parse(f.startDate.value)) ;
+            ierr = 0 ;
+        }
+    }
+
+    // Verify that the user entered something in the
+   // Ending Date input box.
+    if(f.endDate.value != '' && ierr != 1)
+    {
+        if(!isNaN(Date.parse( f.endDate.value )))
+        {
+            var e = new Date(Date.parse(f.endDate.value)) ;
+
+            // call the dateDiff function.
+            var temp = suycDateDiff( s, e, f.selTypeOf.value, roundDays ) ;
+        }else{
+            ierr = 1;
+        }
+    }
+    else
+    {
+        ierr = 1;
+    }
+
+    // update the tellTime field with our new value.
+    if ( temp != null && ierr != 1 )
+         f.tellTime.value = temp.toString() ;
+}
+
+//-- End hiding JavaScript from older browsers -->
+</SCRIPT>
+
+<LINK rel="stylesheet" type="text/css" href="includes/suycSCREEN.css">
+
+</HEAD>
+
+
+<BODY marginwidth="0" marginwidth="0" leftmargin="0" topmargin="0" text="#000000" bgcolor="#ffffff">
+
+<!-- Begin Left side Navigation -->
+<DIV class="clsLeft">
+<TABLE width="120" border="0" cellpadding="5" cellspacing="0">
+<TR height="80">
+	<TD align="center">
+		<a href="#"><img src="images/smilespin.gif" border="0" alt="Home Page" /></a>
+	</TD>
+</TR>
+<TR>
+	<TD><img src="images/spacer.gif" width="1px" height="20px" /></TD>
+</TR>
+<TR>
+	<TD>
+		<A href="default.asp">Home Page</A>
+	</TD>
+</TR>
+<TR>
+	<TD>
+		<A href="codeLib/default.asp?catID=1">ASP</A><BR />
+	</TD>
+</TR>
+<TR>
+	<TD>
+		<A href="codeLib/default.asp?catID=2">JavaScript</A>
+	</TD>
+</TR>
+<TR>
+	<TD>
+		<A href="codeLib/default.asp?catID=3">Data Access</A>
+	</TD>
+</TR>
+<TR>
+	<TD>
+		<A href="codeLib/default.asp?catID=4">HTML</A>
+	</TD>
+</TR>
+<TR>
+	<TD>
+		<A href="codeLib/default.asp?catID=5">ASP.NET</A>
+	</TD>
+</TR>
+<TR>
+	<TD><img src="images/spacer.gif" width="1px" height="60px" /></TD>
+</TR>
+
+	
+	<tr>
+	  <td>
+		<table width="95" height="80" border="0" cellpadding="0" cellspacing="0">
+		<tr><td width="95" bgcolor="#0060bf"><img src="images/spacer.gif" border=0 width="95" height=1></td></tr>
+		<tr height="25">
+			<th bgColor="#ffdead">Feedback</th>
+		</tr>
+		<tr><td width="95" bgcolor="#0060bf"><img src="images/spacer.gif" border=0 width="95" height=1></td></tr>
+		<tr height="55" vAlign="top">
+			<td class="td_sidemenu">
+			<br>
+			<center>
+			<span style="color: #708090; font-size: smaller">
+			<A HREF="mailto: darren@showusyourcode.com?subject=Feedback from the showusyourcode website.">E-mail Us</A><br>
+			OR<br>
+			<a href="guestbook.asp">Use our Guestbook</a><br><br>
+			</span>
+			</center>
+			</td>
+		</tr>
+		</table>
+	  </td>
+	</tr>
+	
+	</TABLE>
+</DIV>
+<!-- End Left side Navigation -->
+<DIV class="clsBody">
+<br><TABLE width="95%" border="0" cellpadding="2" cellspacing="0">
+<TR>
+<TD align="center"><A HREF="jump.asp?pid=3"><IMG SRC="IMAGES/miu_banner_mov3.gif" border="0" ALT="MarkItUp - turn source code into Rich, colorized HTML"/></A></TD>
+</TR>
+</TABLE>
+
+
+<h2 class="TuteTitle">JavaScript equivalent of DateDiff.</h2>
+
+<P class="clsBody">
+This is a JavaScript equivalent of the VBScript DateDiff function.  Basically you specify 2 Dates and an Interval Type of d, m, h or s
+(days, hours, minutes, seconds) and you are returned the number of whole intervals of that type that exist between the start and
+end.</P>
+
+<P class="clsBody">
+For example if you use a Start DateTime of <B>12/24/2001 23:59:59</B> and an End Time of <B>12/25/2001 23:59:58</B> and
+specify an interval type of <B>"d"</B>, the function will return 0 because the difference is actually 1 second short of being 1
+whole full day.</P>
+
+<P class="clsBody">
+Don't take my word for it, here's a form that you can play with, and after that I've included the code for the function and also
+some sample code for how to use it.</P>
+
+<DIV class="demo">
+When entering <B>Starting</B> or <B>Ending</B> Dates some examples of acceptible date formats are:<br/>
+<B>mm/dd/yyyy [hh:mm:ss],<BR />
+2 Jun 2001,<BR />
+2 June 2001,<BR />
+June 2, 2001,<BR />
+2 June 2001 11:30:15 AM,<BR />
+2 June 2001 1:30:20 PM</B><BR />
+
+So 1 second before Midnight on Christmas eve would be written as 12/24/2001 23:59:59<BR />
+If you omit the optional hh:mm:ss parameter then the time will default to 00:00:00.
+
+
+<FORM NAME="frm">
+Enter the Starting date.<BR />
+<INPUT TYPE="text" NAME="startDate" VALUE="" SIZE="60" CLASS="tp" /><BR />
+Enter the Ending date<BR />
+<INPUT TYPE="text" NAME="endDate" VALUE="" SIZE="60" CLASS="tp" /><BR />
+How would you like to measure the difference?<BR />
+<SELECT NAME="selTypeOf">
+    <OPTION VALUE="d">Days</OPTION>
+    <OPTION VALUE="h">Hours</OPTION>
+    <OPTION VALUE="m">Minutes</OPTION>
+    <OPTION VALUE="s">Seconds</OPTION>
+</SELECT><BR />
+Round to nearest interval?.<BR />
+<INPUT TYPE="checkbox" NAME="chkWholeDays" VALUE="1" CLASS="tp" CHECKED="checked" /><BR />
+
+Difference between Dates:<BR />
+<INPUT TYPE="text" NAME="tellTime" VALUE="" SIZE="60" CLASS="tp" /><BR />
+<INPUT TYPE="button" VALUE="Show Difference" NAME="buShow" onClick="presentDate(document.frm) ;" />
+</FORM>
+</DIV>
+
+<BR /><BR />
+
+<!-- Begin code sample -->
+<TABLE width="75%" border="1" cellpadding="2" cellspacing="0">
+<TR><TD class="example">
+<CODE><PRE>
+<TT>function</TT> suycDateDiff( start, end, interval, rounding ) {
+
+    <TT>var</TT> iOut = 0;
+
+    <KBD>// Create 2 error messages, 1 for each argument.</KBD>
+    <TT>var</TT> startMsg = "Check the Start Date and End Date\n"
+        startMsg += "must be a valid date format.\n\n"
+        startMsg += "Please try again." ;
+		
+    <TT>var</TT> intervalMsg = "Sorry the dateAdd function only accepts\n"
+        intervalMsg += "d, h, m OR s intervals.\n\n"
+        intervalMsg += "Please try again." ;
+
+    <TT>var</TT> bufferA = Date.parse( start ) ;
+    <TT>var</TT> bufferB = Date.parse( end ) ;
+    	
+    <KBD>// check that the start parameter is a valid Date. </KBD>
+    if ( isNaN (bufferA) || isNaN (bufferB) ) {
+        alert( startMsg ) ;
+        <TT>return null</TT> ;
+    }
+	
+    <KBD>// check that an interval parameter was not numeric.</KBD>
+    if ( interval.charAt == 'undefined' ) {
+        <KBD>// the user specified an incorrect interval, handle the error.</KBD>
+        alert( intervalMsg ) ;
+        <TT>return null</TT> ;
+    }
+
+    <TT>var</TT> number = bufferB-bufferA ;
+
+    <KBD>// what kind of add to do?</KBD>
+    <TT>switch</TT> (interval.charAt(0))
+    {
+        <TT>case</TT> 'd': <TT>case</TT> 'D':
+            iOut = parseInt(number / 86400000) ;
+            if(rounding) iOut += parseInt((number % 86400000)/43200001) ;
+            <TT>break</TT> ;
+        <TT>case</TT> 'h': <TT>case</TT> 'H':
+            iOut = parseInt(number / 3600000 ) ;
+            if(rounding) iOut += parseInt((number % 3600000)/1800001) ;
+            <TT>break</TT> ;
+        <TT>case</TT> 'm': <TT>case</TT> 'M':
+            iOut = parseInt(number / 60000 ) ;
+            if(rounding) iOut += parseInt((number % 60000)/30001) ;
+            <TT>break</TT> ;
+        <TT>case</TT> 's': <TT>case</TT> 'S':
+            iOut = parseInt(number / 1000 ) ;
+            if(rounding) iOut += parseInt((number % 1000)/501) ;
+            <TT>break</TT> ;
+        default:
+        <KBD>// If we get to here then the interval parameter
+        // didn't meet the d,h,m,s criteria.  Handle
+        // the error.</KBD> 		
+        alert(intervalMsg) ;
+        <TT>return</TT> null ;
+    }
+
+    <TT>return</TT> iOut ;
+}
+</PRE></CODE>
+</TD></TR></TABLE>
+<!-- End code sample -->
+
+<P class="clsBody">
+This is how I call the dateDiff function, although it could be *much* simpler if you didn't need to validate the data before passing
+it to the DateDiff function:</P>
+
+<TABLE width="75%" border="1" cellpadding="2" cellspacing="0">
+<TR><TD class="example">
+<CODE><PRE>
+<KBD>// The presentDate function is called on when you
+// click on the button on the form.</KBD>
+<TT>function</TT> presentDate(f) {
+    <TT>var</TT> ierr = 1 ;
+
+   <KBD>// Verify whether the user wants to return only whole
+   // intervals or intervals rounded to the nearest number
+   // of interval.</KBD>
+   <TT>var</TT> roundDays = f.chkWholeDays.checked ;
+
+   <KBD>// Verify that the user entered something in the
+   // Start Date input box.</KBD>
+    <TT>if</TT>(f.startDate.value != '') {
+        <TT>if</TT>(!isNaN(Date.parse( f.startDate.value ))) {
+            <TT>var</TT> s = <TT>new</TT> Date(Date.parse(f.startDate.value)) ;
+            ierr = 0 ;
+        }
+    }
+
+    <KBD>// Verify that the user entered something in the
+   // Ending Date input box.</KBD>
+    <TT>if</TT>(f.endDate.value != '' && ierr != 1) {
+        <TT>if</TT>(!isNaN(Date.parse( f.endDate.value ))) {
+            <TT>var</TT> e = <TT>new</TT> Date(Date.parse(f.endDate.value)) ;
+
+            <KBD>// call the dateDiff function.</KBD>
+            <TT>var</TT> temp = suycDateDiff( s, e, f.selTypeOf.value, roundDays ) ;
+        }<TT>else</TT>{
+            ierr = 1;
+        }
+    }<TT>else</TT>{
+        ierr = 1;
+    }
+
+    <KBD>// update the tellTime field with our new value.</KBD>
+    <TT>if</TT> ( temp != null && ierr != 1 ) f.tellTime.value = temp.toString() ;
+}
+</PRE></CODE>
+</TD></TR></TABLE>
+<!-- End code sample -->
+
+<P class="clsBody">
+There you have it, a nice piece of code that can be used again and again.</P>
+
+<P style="color: green; font-size: smaller; font-weight: bolder;">This sample has been viewed: 8957 times.</P><BR/>
+</DIV>
+
+</BODY>
+</HTML>

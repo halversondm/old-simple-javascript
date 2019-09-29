@@ -1,0 +1,56 @@
+<!--detecting the version of JavaScript supported by the browser-->
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+         "http://www.w3.org/TR/html4/strict.dtd">
+
+<HTML>
+<HEAD>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+
+<SCRIPT type="text/javascript">
+<!--
+var version = 1;
+//--></SCRIPT>
+
+<SCRIPT type="text/javascript1.1">
+<!--
+var version = 1.1;
+//--></SCRIPT>
+
+<SCRIPT type="text/javascript1.2">
+<!--
+var version = 1.2;
+//--></SCRIPT>
+
+<SCRIPT type="text/javascript">
+<!--
+if (document.images)
+{
+   document.write("Nice going. Your browser supports JavaScript version " + version);
+   // send the browser user to another page where JavaScript is supported
+   //window.location.replace("http://www.YourWebSite.com/Supporting_JavaScript.html");
+   alert("You would be sent to a page that supports JavaScript");
+}
+else
+{
+   document.write("Dinosaur. Your browser does not support JavaScript. We're sending you elsewhere.");
+   // send the browser user to another page where JavaScript is NOT supported
+   //window.location.href = "http://www.YourWebSite.com/No_JavaScript_Support.html";
+   alert("You would be sent to a page that does NOT support JavaScript");
+}
+//--></SCRIPT>
+
+</HEAD>
+
+<BODY>
+</BODY>
+</HTML>
+
+
+
+
+
+
+
+
+

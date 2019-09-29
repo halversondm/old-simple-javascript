@@ -1,0 +1,24 @@
+<!--A trick to showing an email address on a web page while protecting-->
+<!--it from web "robots" that gather email addresses from source code-->
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+         "http://www.w3.org/TR/html4/strict.dtd">
+
+<HTML>
+<HEAD>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+
+</HEAD>
+
+<BODY>
+<SCRIPT type="text/javascript">
+<!-- Begin hiding JavaScript from older browsers --
+  user = "username";
+  site = "yoursite.com";
+  document.write('<a href=\"mailto:' + user + '@' + site + '\">');
+  document.write(user + '@' + site + '</a>');
+//-- End hiding JavaScript from older browsers -->
+</SCRIPT>
+
+</BODY>
+</HTML>

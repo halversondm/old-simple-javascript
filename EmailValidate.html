@@ -1,0 +1,81 @@
+<!--perform several validations on a given Email Address-->
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+         "http://www.w3.org/TR/html4/strict.dtd">
+
+<HTML>
+<HEAD>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+
+
+<SCRIPT type="text/javascript">
+<!-- Begin hiding JavaScript from older browsers --
+
+function emailCheck()
+{
+   var testresults=false;
+   var str=document.MyEmailAddrForm.MyEmailAddrString.value;
+   var filter=/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i
+   if (filter.test(str))
+   {
+     testresults=true;
+   }
+   else
+   {
+     alert("The given email address may be invalid. "
+            +"Please check the prefix and the '@' character. "
+            +"The '@' character should not be the first character.");
+     return false;
+   }
+
+   txt=document.MyEmailAddrForm.MyEmailAddrString.value;
+   if (txt.indexOf("@")<3)
+   {
+      alert("The given email address may be invalid. "
+             +"Please check the prefix and the '@' sign.");
+      return false;
+   }
+   else
+   {
+     testresults=true;
+   }
+
+   if ((txt.indexOf(".com")<5)
+    && (txt.indexOf(".org")<5)
+    && (txt.indexOf(".gov")<5)
+    && (txt.indexOf(".net")<5)
+    && (txt.indexOf(".mil")<5)
+    && (txt.indexOf(".edu")<5) )
+   {
+      alert("The given email address may be invalid. "
+            +"Please check the suffix for accuracy. "
+            +"It should include a one of the following suffixes: "
+            +".com, .edu, .net, .org, .gov .mil");
+      return false;
+   }
+   else
+   {
+     testresults=true;
+   }
+
+   alert("Verification successful!  Your form would not have been submitted.");
+   return testresults;
+}
+
+//-- End hiding JavaScript from older browsers -->
+</SCRIPT>
+</HEAD>
+
+<BODY>
+
+Enter an email address then click the Submit button
+
+<FORM NAME="MyEmailAddrForm" ACTION="http://www.yoursite.com/cgi-bin/script.cgi"
+      onSubmit="return emailCheck()">
+   <DIV ALIGN=LEFT><INPUT TYPE="text" NAME="MyEmailAddrString" SIZE=40 VALUE=""><BR />
+      <INPUT TYPE="submit" NAME="email1" VALUE=" Submit ">
+   </DIV>
+</FORM>
+
+</BODY>
+</HTML>

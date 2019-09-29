@@ -1,0 +1,45 @@
+<!--extract all links from the web page and write them to a new page-->
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+         "http://www.w3.org/TR/html4/strict.dtd">
+
+<HTML>
+<HEAD>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+
+</HEAD>
+
+<BODY>
+<SCRIPT type="text/javascript">
+<!-- Begin hiding JavaScript from older browsers --
+
+function extractlinks()
+{
+   if (document.all||document.getElementById)
+   {
+     if (document.all)
+         var links=document.all.tags("A")
+     else
+     if (document.getElementById)
+         var links=document.getElementsByTagName("A")
+     var total=links.length
+     var win2=window.open("","","menubar,scrollbars,status")
+     win2.document.write("<h2>Total Links="+total+"</h2><br>")
+     for (ii=0; ii<total; ++ii)
+     {
+        win2.document.write('<a href="'+links[ii]+'">'+links[ii].innerHTML+'</a><br>')
+     }
+     win2.document.close()
+   }
+}
+//-- End hiding JavaScript from older browsers -->
+</SCRIPT>
+
+  <a href="_LinksExtractor_1.html" <small>Link-1</small></a> - Jump to the first link<br />
+  <a href="_LinksExtractor_2.html" <small>Link-2</small></a> - Jump to the second link<br />
+  <a href="_LinksExtractor_3.html" <small>Link-3</small></a> - Jump to the third link<br />
+
+  <button onClick="extractlinks()">Extract the Links</button>
+
+</BODY>
+</HTML>

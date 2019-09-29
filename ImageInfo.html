@@ -1,0 +1,58 @@
+<!--show description when hover the mouse over an image-->
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+         "http://www.w3.org/TR/html4/strict.dtd">
+
+<HTML>
+<HEAD>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+
+
+<SCRIPT type="text/javascript">
+<!-- Begin hiding JavaScript from older browsers --
+
+function showMsg(text)
+{
+   document.MyImageForm.message.value = text;
+}
+//-- End hiding JavaScript from older browsers -->
+</SCRIPT>
+</HEAD>
+
+<BODY>
+
+Hover mouse pointer over an image while watching the textarea box<BR />
+
+<SCRIPT type="text/javascript">
+<!-- Begin hiding JavaScript from older browsers --
+
+
+//-- End hiding JavaScript from older browsers -->
+</SCRIPT>
+
+<ul>
+  <li><a href="HTTP://WWW.SITE1.COM"
+         onmouseover="showMsg('this is information about image #1....');"
+         onmouseout="showMsg('choose an image above for a description!');">
+      <img name="button1" src="HTTP://WWW.YOUR-SITE.COM/IMG/PIC1.JPG"></a>
+  </li>
+  <li><a href="HTTP://WWW.SITE2.COM"
+         onmouseover="showMsg('this is information about image #2....');"
+         onmouseout="showMsg('choose an image above for a description!');">
+      <img name="button2" src="HTTP://WWW.YOUR-SITE.COM/IMG/PIC2.JPG"></a>
+  </li>
+  <li><a href="HTTP://WWW.SITE3.COM"
+         onmouseover="showMsg('this is information about image #3....');"
+         onmouseout="showMsg('choose an image above for a description!');">
+      <img name="button3" src="HTTP://WWW.YOUR-SITE.COM/IMG/PIC3.JPG"></a>
+  </li>
+
+  <form name="MyImageForm">
+     <textarea name=message rows=2 cols=40
+               wrap=virtual>choose an image above for a description!
+     </textarea><BR />
+     <input type=hidden name=go value="">
+  </form>
+
+</BODY>
+</HTML>

@@ -1,0 +1,47 @@
+<!--allow Enter key to be used to like a tab to the next field-->
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+         "http://www.w3.org/TR/html4/strict.dtd">
+
+<HTML>
+<HEAD>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+
+
+<SCRIPT type="text/javascript">
+<!-- Begin hiding JavaScript from older browsers --
+
+function focusNext( form, elemName, evt )
+{
+   evt = (evt) ? evt : event;
+   var charCode = (evt.charCode) ? evt.charCode
+                : ( (evt.which) ? evt.which : evt.keyCode );
+
+   if ( charCode == 13  ||  charCode == 3 )
+   {
+     form.elements[elemName].focus();
+     return false;
+   }
+   return true;
+}
+
+//-- End hiding JavaScript from older browsers -->
+</SCRIPT>
+</HEAD>
+
+<BODY onload="document.myForm.myField1.focus();">
+
+<FORM name="myForm">
+
+  Type into each box then use ENTER key to tab to the next box<BR />
+
+  <INPUT type="text" name="myField1" id="myName" size="40"
+         onkeypress="return focusNext(this.form, 'myField2', event)" />
+  <INPUT type="text" name="myField2" id="myAddr1" size="30"
+         onkeypress="return focusNext(this.form, 'myField3', event)" />
+  <INPUT type="text" name="myField3" id="myAddr2" size="30"
+         onkeypress="return focusNext(this.form, 'myField1', event)" />
+</FORM>
+
+</BODY>
+</HTML>

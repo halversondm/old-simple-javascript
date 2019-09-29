@@ -1,0 +1,129 @@
+<!--sort the data within a table by clicking on the column headers-->
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+         "http://www.w3.org/TR/html4/strict.dtd">
+
+<HTML>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+
+
+<!--This example was gotten from http://webfx.eae.net/dhtl/tablesort/tablesort.html-->
+<!--Two files needed to go along with this file:-->
+<!--  1. tablesort.js -->
+<!--  2. tablesort.css-->
+
+<link rel="STYLESHEET" type="text/css" href="tablesort.css">
+<script type="text/javascript" src="tablesort.js"></script>
+
+<TITLE>JavaScript Table Sort Example</TITLE>
+
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF" TOPMARGIN="0" LEFTMARGIN="0" MARGINWIDTH="0" MARGINHEIGHT="0" TEXT="#000000" ALINK="#003399" LINK="#003399" VLINK="#003399" >
+
+<h2>Example for Sorting an HTML table via JavaScript</h2>
+
+<!--Screen Instructions-->
+<p>
+ Just click on a column header to sort that column.<BR />
+ The first click is ascending.<BR />
+ The second click is descending.
+</p>
+
+<!--Example Table-->
+<table cellspacing="0" onclick="sortColumn(event)">
+<thead>
+   <tr>
+        <td style="width: 60px;">Item</td>
+        <td style="width: 60px;">Name</td>
+        <td style="width: 60px;">Date</td>
+   </tr>
+</thead>
+<tbody>
+   <tr>
+        <td>Item 3</td>
+        <td>Steven</td>
+        <td>19950227</td>
+   </tr>
+   <tr>
+        <td>Item 2</td>
+        <td>Emily</td>
+        <td>20020227</td>
+   </tr>
+   <tr>
+        <td>Item 1</td>
+        <td>Erik</td>
+        <td>19990228</td>
+   </tr>
+   <tr>
+        <td>Item 4</td>
+        <td>Sandra</td>
+        <td>19960227</td>
+   </tr>
+   <tr>
+        <td>Item 7</td>
+        <td>Franklin</td>
+        <td>19970227</td>
+   </tr>
+   <tr>
+        <td>Item 6</td>
+        <td>Teresa</td>
+        <td>19900227</td>
+   </tr>
+   <tr>
+        <td>Item 5</td>
+        <td>Mike</td>
+        <td>19880227</td>
+   </tr>
+   <tr>
+        <td>Item 8</td>
+        <td>Alice</td>
+        <td>19930227</td>
+   </tr>
+   <tr>
+        <td>Item 11</td>
+        <td>Bill</td>
+        <td>19940227</td>
+   </tr>
+   <tr>
+        <td>Item 10</td>
+        <td>Mary</td>
+        <td>20010227</td>
+   </tr>
+   <tr>
+        <td>Item 9</td>
+        <td>Linus</td>
+        <td>19980227</td>
+   </tr>
+   <tr>
+        <td>Item 12</td>
+        <td>Rachael</td>
+        <td>19960227</td>
+   </tr>
+   <tr>
+        <td>Item 15</td>
+        <td>Peter</td>
+        <td>19950227</td>
+   </tr>
+   <tr>
+        <td>Item 14</td>
+        <td>Carrie</td>
+        <td>19910227</td>
+   </tr>
+   <tr>
+        <td>Item 13</td>
+        <td>Paul</td>
+        <td>19920227</td>
+   </tr>
+   <tr>
+        <td>Item 16</td>
+        <td>Anne</td>
+        <td>19960227</td>
+   </tr>
+</tbody>
+</table>
+
+</BODY>
+</HTML>
+

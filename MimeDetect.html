@@ -1,0 +1,48 @@
+<!--detect which MIMEs are installed-->
+<!--Note that this also demonstrates creating HTML on the fly-->
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+         "http://www.w3.org/TR/html4/strict.dtd">
+
+<HTML>
+<HEAD>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+
+<SCRIPT type="text/javascript"">
+<!-- Begin hiding JavaScript from older browsers --
+
+document.writeln("<TABLE BORDER=1><TR VALIGN=TOP>",
+                 "<TH ALIGN=left>i",
+                 "<TH ALIGN=left>type",
+                 "<TH ALIGN=left>name",
+                 "<TH ALIGN=left>description",
+                 "<TH ALIGN=left>suffixes</TR>");
+var findCount = 0;
+for (ii=0; ii < navigator.mimeTypes.length; ++ii)
+{
+  document.writeln("<TR VALIGN=TOP><TD>",ii,
+                   "<TD>",navigator.mimeTypes[ii].type,
+                   "<TD>",navigator.mimeTypes[ii].name,
+                   "<TD>",navigator.mimeTypes[ii].description,
+                   "<TD>",navigator.mimeTypes[ii].suffixes,
+                   "</TR>");
+  ++findCount;
+}
+if( findCount == 0 )
+{
+   document.writeln("<TR VALIGN=TOP><TD>",ii,
+                    "<TD>"," ","</TD>",
+                    "<TD>"," ","</TD>",
+                    "<TD>","(none found)",
+                    "</TR>");
+}
+document.writeln("</TABLE>")
+//-- End hiding JavaScript from older browsers -->
+</SCRIPT>
+</HEAD>
+
+<BODY>
+
+</BODY>
+</HTML>
+

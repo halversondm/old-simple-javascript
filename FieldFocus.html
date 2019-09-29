@@ -1,0 +1,74 @@
+<!--set focus to a specific element on the web page.-->
+<!--Also, if the element receiving focus is type 'text'-->
+<!--then select/highlight the text value of the element-->
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+         "http://www.w3.org/TR/html4/strict.dtd">
+
+<HTML>
+<HEAD>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+
+
+<SCRIPT type="text/javascript">
+<!-- Begin hiding JavaScript from older browsers --
+
+function putFocus(formIdx, elementIdx) // element# is zero-based
+{
+  if (document.forms.length > 0)
+  {
+    document.forms[formIdx].elements[elementIdx].focus();
+    if (document.forms[formIdx].elements[elementIdx].type.indexOf("text") != -1)
+    {
+      document.forms[formIdx].elements[elementIdx].select();
+    }
+  }
+}
+
+function setFocus()
+{
+  for (var frm = 0; frm < document.forms.length; ++frm)
+  {
+    for (var fld = 0; fld < document.forms[frm].elements.length; ++fld)
+    {
+      var elt = document.forms[frm].elements[fld];
+      // Skip types buttons, radio, and check-boxes.
+      // To skip "select" types, remove them from IF statement.
+      if ((elt.type == "text")
+       || (elt.type == "textarea")
+       || (elt.type == "reset")
+       || (elt.type == "select-one")
+       || (elt.type == "select-multiple") )
+      {
+        elt.focus();
+        // select text in text field or textarea
+        if (elt.type.indexOf("text") != -1)
+        {
+          elt.select();
+        }
+        return true;
+      }
+    }
+  }
+  return true;
+}
+
+//-- End hiding JavaScript from older browsers -->
+</SCRIPT>
+</HEAD>
+
+
+<BODY ONLOAD="putFocus(0,1);">
+<!--<BODY ONLOAD="return setFocus();">    -->
+
+  <div align="left">
+    <form method="post" name="bogus" id="bogus-form">
+      <input type="text" name="bogus_field0" id="bogus_field0" size="30" maxlength="12"><BR />
+      <input type="text" name="bogus_field1" id="bogus_field1" size="30" maxlength="12"
+             value="Form focus started here!"><BR />
+      <input type="text" name="bogus_field2" id="bogus_field2" size="30" maxlength="12">
+      <input type=reset value="Reset" onClick="return setFocus()">
+  </div>
+
+</BODY>
+</HTML>

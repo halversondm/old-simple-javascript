@@ -1,0 +1,160 @@
+<!--menu (in left margin) floats as the page is scrolled-->
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+         "http://www.w3.org/TR/html4/strict.dtd">
+
+<HTML>
+<HEAD>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+
+
+<SCRIPT type="text/javascript">
+<!-- Begin hiding JavaScript from older browsers --
+
+function setVariables()
+{
+   if (navigator.appName == "Netscape")
+   {
+     v=".top=";
+     dS="document.";
+     sD="";
+     y="window.pageYOffset";
+   }
+   else
+   {
+     v=".pixelTop=";
+     dS="";
+     sD=".style";
+     y="document.body.scrollTop";
+   }
+}
+
+function checkLocation()
+{
+   object="MyObject";
+   yy=eval(y);
+   eval(dS+object+sD+v+yy);
+   setTimeout("checkLocation()",10);
+}
+
+//-- End hiding JavaScript from older browsers -->
+</SCRIPT>
+</HEAD>
+
+<BODY OnLoad="setVariables();checkLocation()">
+
+<SCRIPT type="text/javascript">
+<!-- Begin hiding JavaScript from older browsers --
+
+
+//-- End hiding JavaScript from older browsers -->
+</SCRIPT>
+
+<div id="MyObject" style="position:absolute; visibility:show; "
+                       +"left:0px; top:0px; z-index:2">
+
+  <table width=240 border=0 cellspacing=0 cellpadding=0>
+    <tr>
+      <td>MAIN MENU</td>
+    </tr>
+    <tr>
+      <td><a href="put-appropriate-URL-here" >Your First Menu Choice Here</a></td>
+    </tr>
+    <tr>
+      <td><a href="put-appropriate-URL-here" >Your Second Menu Choice Here</a></td>
+    </tr>
+    <tr>
+      <td><a href="put-appropriate-URL-here" >Your Third Menu Choice Here</a></td>
+    </tr>
+    <tr>
+      <td>Your Fourth Menu Choice Here</td>
+    </tr>
+    <tr>
+      <td>
+         <table width=240 border=0 cellspacing=0 cellpadding=0>
+           <tr>
+             <td>&nbsp;&nbsp;&nbsp;<a href="put-appropriate-URL-here" >
+                    Fourth Menu Choice Sub-1 Here</a></td>
+           </tr>
+           <tr>
+             <td>&nbsp;&nbsp;&nbsp;<a href="put-appropriate-URL-here" >
+                    Fourth Menu Choice Sub-2 Here</a></td>
+           </tr>
+         </table>
+      </td>
+    </tr>
+    <tr>
+      <td><a href="put-appropriate-URL-here" >Your Fifth Menu Choice Here</a></td>
+    </tr>
+  </table>
+</div>
+
+  <table>
+    <tr>
+      <td width=240>
+        <font color="white"> </font>
+      </td>
+      <td>
+        The rest of your site goes here<BR />
+        Line to make the screen scrollable<BR />
+        Line to make the screen scrollable<BR />
+        Line to make the screen scrollable<BR />
+        Line to make the screen scrollable<BR />
+        Line to make the screen scrollable<BR />
+        Line to make the screen scrollable<BR />
+        Line to make the screen scrollable<BR />
+        Line to make the screen scrollable<BR />
+        Line to make the screen scrollable<BR />
+        Line to make the screen scrollable<BR />
+        Line to make the screen scrollable<BR />
+        Line to make the screen scrollable<BR />
+        Line to make the screen scrollable<BR />
+        Line to make the screen scrollable<BR />
+        Line to make the screen scrollable<BR />
+        Line to make the screen scrollable<BR />
+        Line to make the screen scrollable<BR />
+        Line to make the screen scrollable<BR />
+        Line to make the screen scrollable<BR />
+        Line to make the screen scrollable<BR />
+        Line to make the screen scrollable<BR />
+        Line to make the screen scrollable<BR />
+        Line to make the screen scrollable<BR />
+        Line to make the screen scrollable<BR />
+        Line to make the screen scrollable<BR />
+        Line to make the screen scrollable<BR />
+        Line to make the screen scrollable<BR />
+        Line to make the screen scrollable<BR />
+        Line to make the screen scrollable<BR />
+        Line to make the screen scrollable<BR />
+        Line to make the screen scrollable<BR />
+        Line to make the screen scrollable<BR />
+        Line to make the screen scrollable<BR />
+        Line to make the screen scrollable<BR />
+        Line to make the screen scrollable<BR />
+        Line to make the screen scrollable<BR />
+        Line to make the screen scrollable<BR />
+        Line to make the screen scrollable<BR />
+        Line to make the screen scrollable<BR />
+        Line to make the screen scrollable<BR />
+        Line to make the screen scrollable<BR />
+        Line to make the screen scrollable<BR />
+        Line to make the screen scrollable<BR />
+        Line to make the screen scrollable<BR />
+        Line to make the screen scrollable<BR />
+        Line to make the screen scrollable<BR />
+        Line to make the screen scrollable<BR />
+        Line to make the screen scrollable<BR />
+        Line to make the screen scrollable<BR />
+        Line to make the screen scrollable<BR />
+        Line to make the screen scrollable<BR />
+        Line to make the screen scrollable<BR />
+        Line to make the screen scrollable<BR />
+        Line to make the screen scrollable<BR />
+        Line to make the screen scrollable<BR />
+      </td>
+    </tr>
+  </table>
+
+</BODY>
+</HTML>

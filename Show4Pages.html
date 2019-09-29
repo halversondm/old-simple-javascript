@@ -1,0 +1,73 @@
+<!--open and show four web pages at the same time-->
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+         "http://www.w3.org/TR/html4/strict.dtd">
+
+<HTML>
+<HEAD>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+
+
+<SCRIPT type="text/javascript">
+<!-- Begin hiding JavaScript from older browsers --
+
+if (window != window.top)
+    top.location.href = location.href;
+
+x1="no",x2="no",x3="no",x4="no",x5="no",x6="no",x7="no",x8="no",x=""
+y = new Array()
+
+function make4windows()
+{
+   lt="blank.htm";
+   lb="blank.htm";
+   rt="blank.htm";
+   rb="blank.htm";
+   if (y[0])  lt=y[0];
+   if (y[1])  lb=y[1];
+   if (y[2])  rt=y[2];
+   if (y[3])  rb=y[3];
+   x += '<frameset cols="50%,*" border=5><frameset rows="50%,*"><frame src="'+lt;
+   x += '" name="lt"><frame src="'+lb;
+   x += '" name="lb"></frameset><frameset rows=50%,*><frame src="'+rt;
+   x += '" name="rt"><frame src="'+rb+'" name="rb"></frameset></frameset>';
+   document.write(x);
+   document.close();
+ }
+
+function getCheckedPages()
+{
+   if (document.p.b1.checked==true)y=y.concat("Show4Pages_1.html")
+   if (document.p.b2.checked==true)y=y.concat("Show4Pages_2.html")
+   if (document.p.b3.checked==true)y=y.concat("Show4Pages_3.html")
+   if (document.p.b4.checked==true)y=y.concat("Show4Pages_4.html")
+   if (document.p.b5.checked==true)y=y.concat("Show4Pages_5.html")
+   if (document.p.b6.checked==true)y=y.concat("Show4Pages_6.html")
+   if (document.p.b7.checked==true)y=y.concat("Show4Pages_7.html")
+   if (document.p.b8.checked==true)y=y.concat("Show4Pages_8.html")
+   make4windows()
+}
+//-- End hiding JavaScript from older browsers -->
+</SCRIPT>
+</HEAD>
+
+<BODY>
+
+<FORM name="p">
+  <CENTER>View Multiple Sites (max four)<br>
+  <br /><b>Check up to four sites</b><br />
+  <table border=1 cellpadding=5><tr>
+    <td><input type=checkbox name=b1>Page 1</td>
+    <td><input type=checkbox name=b2>Page 2</td>
+    <td><input type=checkbox name=b3>Page 3</td>
+    <td><input type=checkbox name=b4>Page 4</td></tr><tr>
+    <td><input type=checkbox name=b5>Page 5</td>
+    <td><input type=checkbox name=b6>Page 6</td>
+    <td><input type=checkbox name=b7>Page 7</td>
+    <td><input type=checkbox name=b8>Page 8</td></tr>
+  </table>
+
+  <a href="javascript:getCheckedPages()">Go</a></FORM>
+
+</BODY>
+</HTML>

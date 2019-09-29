@@ -1,0 +1,72 @@
+<!--display the time in either military format or am/pm format-->
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+         "http://www.w3.org/TR/html4/strict.dtd">
+
+<HTML>
+<HEAD>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+
+
+<SCRIPT type="text/javascript">
+<!--Begin hiding JavaScript from older browsers--
+
+function showMilitaryTime()
+{
+   if (document.form.showMilitary[0].checked)
+      return true;
+   return false;
+}
+
+function showTheHours(theHour)
+{
+   if (showMilitaryTime() || (theHour > 0 && theHour < 13))
+   {
+      if (theHour == "0") theHour = 12;
+          return (theHour);
+   }
+   if (theHour == 0)
+       return (12);
+   return (theHour-12);
+}
+
+function showZeroFilled(inValue)
+{
+   if (inValue > 9)
+       return "" + inValue;
+   return "0" + inValue;
+}
+
+function showAmPm()
+{
+   if (showMilitaryTime())
+       return ("");
+   if (now.getHours() < 12)
+       return (" am");
+   return (" pm");
+}
+
+function showTheTime()
+{
+   now = new Date
+   document.form.showTime.value = showTheHours(now.getHours()) + ":"
+      + showZeroFilled(now.getMinutes()) + ":" + showZeroFilled(now.getSeconds())
+      + showAmPm()
+   setTimeout("showTheTime()",1000)
+}
+// End hiding JavaScript from older browsers -->
+</SCRIPT>
+
+</HEAD>
+
+
+<BODY onLoad="showTheTime()">
+
+<form name=form>
+<input type=text name=showTime size=11><p>
+<input type=radio name=showMilitary checked>Military Time<br />
+<input type=radio name=showMilitary>12 Hour Time<br />
+</form>
+
+</BODY>
+</HTML>

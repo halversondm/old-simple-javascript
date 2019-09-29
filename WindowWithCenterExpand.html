@@ -1,0 +1,37 @@
+<!--start new window via expanding from a center point-->
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+         "http://www.w3.org/TR/html4/strict.dtd">
+
+<HTML>
+<HEAD>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+
+
+<SCRIPT type="text/javascript">
+<!-- Begin hiding JavaScript from older browsers --
+
+function expand()
+{
+   for(x = 0; x < 50; x++)
+   {
+     window.moveTo(screen.availWidth * -(x - 50) / 100,
+                   screen.availHeight * -(x - 50) / 100);
+     window.resizeTo(screen.availWidth * x / 50,
+                     screen.availHeight * x / 50);
+   }
+   window.moveTo(0,0);
+   window.resizeTo(screen.availWidth, screen.availHeight);
+}
+//-- End hiding JavaScript from older browsers -->
+</SCRIPT>
+</HEAD>
+
+<BODY>
+
+<a href="http://www.msn.com"
+   onClick="expand();">Click here to bring up the web page as expanding from the center</a>
+
+</BODY>
+</HTML>
+

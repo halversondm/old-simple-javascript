@@ -1,0 +1,49 @@
+<!--via clicking, enlarge an image then restore its original size-->
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+         "http://www.w3.org/TR/html4/strict.dtd">
+
+<HTML>
+<HEAD>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+
+
+<SCRIPT type="text/javascript">
+<!-- Begin hiding JavaScript from older browsers --
+
+function resizeImage(ImageObject,newHeight)
+{
+   ImageObject.height=newHeight;
+}
+//-- End hiding JavaScript from older browsers -->
+</script>
+
+</HEAD>
+
+
+<BODY>
+
+<center>
+<b>Double-click the images to enlarge them<br>and click once to make them thumbnail size again.</b>
+</center>
+
+<p>
+<table align="center">
+ <tr>
+  <td align="center">
+    <img src="ImageResize1.jpg" height="100" name="image1"
+         ondblclick="resizeImage(this,300)"
+         onclick="resizeImage(this,100)">
+    <br /><b>Pic Caption 1</b>
+  </td>
+  <td align="center">
+     <img src="ImageResize2.jpg" height="100" name="image2"
+          ondblclick="resizeImage(this,300)"
+          onclick="resizeImage(this,100)">
+     <br /><b>Pic Caption 2</b>
+  </td>
+ </tr>
+</table>
+
+</BODY>
+</HTML>

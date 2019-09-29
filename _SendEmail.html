@@ -1,0 +1,57 @@
+<!--Type in an email on a web page then send it through the email program-->
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+         "http://www.w3.org/TR/html4/strict.dtd">
+
+<HTML>
+<HEAD>
+
+<SCRIPT type="text/javascript">
+<!-- Begin hiding JavaScript from older browsers --
+
+function startTime()
+{
+   var time= new Date();
+   hours= time.getHours();
+   mins= time.getMinutes();
+   secs= time.getSeconds();
+   closeTime=hours*3600+mins*60+secs;
+   closeTime+=5;
+   Timer();
+}
+
+function Timer()
+{
+   var time= new Date();
+   hours= time.getHours();
+   mins= time.getMinutes();
+   secs= time.getSeconds();
+   curTime=hours*3600+mins*60+secs
+   if (curTime>=closeTime)
+       window.close();
+   else
+       window.setTimeout("Timer()",1000)
+}
+//-- End hiding JavaScript from older browsers -->
+</SCRIPT>
+</HEAD>
+
+
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#FF0000" VLINK="#000080" ALINK="#000080" onLoad="startTime()">
+
+<SCRIPT type="text/javascript">
+<!-- Begin hiding JavaScript from older browsers --
+
+  document.write("<H2><CENTER>Sending Message...</CENTER></H2>")
+  document.write("<form name='mailform' method='POST' action='mailto:" + opener.document.mail.to.value
+                 + "?subject=Message Form WWW User' enctype='text/plain'>")
+  document.write("<input type=hidden name='From' value='" + opener.document.mail.from.value + "'>")
+  document.write("<input type=hidden name='Message' value='" + opener.document.mail.message.value + "'>")
+  document.write("<input type='submit' name='submitter' value='Processing Your E-mail....'></form>")
+  window.document.mailform.submitter.click()
+//-- End hiding JavaScript from older browsers -->
+</SCRIPT>
+
+</BODY>
+</HTML>
+

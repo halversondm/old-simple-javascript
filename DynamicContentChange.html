@@ -1,0 +1,39 @@
+<!--dynamically change contents of web page elements-->
+<!--Note: this is basically only for Microsoft Internet Explorer -->
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+         "http://www.w3.org/TR/html4/strict.dtd">
+
+<HTML>
+<HEAD>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+
+<SCRIPT type="text/javascript">
+<!-- Begin hiding JavaScript from older browsers --
+
+function myClick1()
+{
+    document.all("MyID1").innerText = 'This is the changed paragraph.';
+}
+
+function myClick2()
+{
+    document.all("MyID2").innerHTML = '<FONT COLOR="#FF0000">'
+       +'This</FONT> is <B>not</B> <I>plain</I>';
+}
+
+//-- End hiding JavaScript from older browsers -->
+</SCRIPT>
+</HEAD>
+
+<BODY>
+
+<P ID="MyID1">This is a normal paragraph.</P>
+<FORM><INPUT TYPE="BUTTON" VALUE="Click and Watch Above" onClick="myClick1()"></FORM>
+
+<P ID="MyID2">This is a <B>plain</B> paragraph</P>
+<FORM><INPUT TYPE="BUTTON" VALUE="Click and Watch Above" onClick="myClick2()"></FORM>
+
+</BODY>
+</HTML>
+

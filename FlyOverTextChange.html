@@ -1,0 +1,81 @@
+<!--change text on the screen whenever hover over specified text-->
+<!--see: http://www.jsmadeeasy.com/javascripts/Links%20and%20buttons/Textual%20Tooltip/index.htm-->
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+         "http://www.w3.org/TR/html4/strict.dtd">
+
+<HTML>
+<HEAD>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+
+
+<script type="text/javascript">
+<!-- begin hiding of JavaScript from older browsers
+
+var MyArray=new Array()
+MyArray[0]='<br /><big><b>Main Menu Item</b></big><br />Put here whatever you want to show up whenever hover over the main menu portion.'
+MyArray[1]='<br /><big><b>First Menu Selection Item</b></big><br />Put here whatever you want to show up whenever hover over first textual piece.'
+MyArray[2]='<br /><big><b>Second Menu Selection Item</b></big><br />Put here whatever you want to show up whenever hover over second textual piece.'
+MyArray[3]='<br /><big><b>Third Menu Selection Item</b></big><br />Put here whatever you want to show up whenever hover over third textual piece.'
+
+function changetext(whichArrayItem)
+{
+   if (document.all)
+   {
+      MyOwnMenuNonHoverText.innerHTML='<font face="Verdana"><small>'+whichArrayItem+'<font></small>'
+   }
+}
+
+function reset()
+{
+   if (!MyOwnMenu.contains(event.toElement))
+   {
+      MyOwnMenuNonHoverText.innerHTML=temphtml
+   }
+}
+
+// end hiding JavaScript from older browsers -->
+</script>
+
+</HEAD>
+
+
+<BODY>
+
+<!--One anchor exists for each of the entries in the array called 'MyArray'.-->
+<!--Each anchor has several things associated with it:-->
+<!--1. html page to link to when clicked-->
+<!--2. title of the extra pop-up help info shown when hover over the anchor-->
+<!--   (this is gotten from the array entry)-->
+<!--3. text message of the extra pop-up help shown when hover over the anchor-->
+<!--   (this is gotten from the array entry)-->
+<!--The menu system also contains the main menu header which can also have an-->
+<!--associated text message and anchor to link to another page.-->
+
+  <div id="MyOwnMenu" style="line-height:20px"
+     onMouseout ="reset()"><p><strong><font face="Verdana"><a href="../_FlyOverLinkNone.html"
+     onMouseover="changetext(MyArray[0])"><small>The Menu System</small></a><br />
+     <a href="../_FlyOverLinkTo_1.html" onMouseover="changetext(MyArray[1])"><small>Menu-Item-1</small></a><br />
+     <a href="../_FlyOverLinkTo_2.html" onMouseover="changetext(MyArray[2])"><small>Menu-Item-2</small></a><br />
+     <a href="../_FlyOverLinkTo_3.html" onMouseover="changetext(MyArray[3])"><small>Menu-Item-3</small></a><br />
+  </div>
+
+  <div id="MyOwnMenuNonHoverText" align="left"><strong><font face="Verdana" color="#000000">
+        <p>Welcome to Menus with hover-over-for-additional-info!<br />
+        </font></strong><font face="Verdana"><small>Hope you like this. It is something that may be
+        of some interest to you. As you hover your mouse pointer over any of the menu items you will
+        note that additional information about the menu item is displayed to the right.</small><br />
+        </font>
+  </div>
+
+<script type="text/javascript1.2">
+   if (document.all)
+   {
+      var temphtml=MyOwnMenuNonHoverText.innerHTML
+   }
+</script>
+
+</BODY>
+</HTML>
+
+

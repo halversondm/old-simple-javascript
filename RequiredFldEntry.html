@@ -1,0 +1,229 @@
+<!--assure that the required form fields have data values-->
+<!--Also, put auto-focus the first field on the form-->
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+         "http://www.w3.org/TR/html4/strict.dtd">
+
+<HTML>
+<HEAD>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+
+
+<SCRIPT type="text/javascript">
+<!-- Begin hiding JavaScript from older browsers --
+
+var alphaChars="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ";
+var numChars="0123456789";
+var error;
+var error_n;
+var error_ad;
+var error_a;
+var error_z;
+var errormsg;
+
+//----------------Customize as needed-------------------------------
+var isNameReq=true;    // True if Name field required else False
+var isAddressReq=true; // True if Address field required else False
+var isAgeReq=false;    // True if Name Age required else False
+var isZipReq=true;     // True if Name Zip required else False
+//------------------------------------------------------------------
+
+function reset_error()
+{
+ error_n=false;
+ error_ad=false;
+ error_a=false;
+ error_z=false;
+ errormsg='Following Errors Occured ::\n_____________________________\n\n';
+}
+
+function validate_name()
+{
+  if (isNameReq)
+  {
+    if (document.main.name.value=="")
+    {
+     errormsg+='Name required\n';
+     error_n=true;
+     document.main.name.focus();
+    }
+  }
+  for(var ii=0; ii<document.main.name.value.length; ++ii)
+  {
+    for(var jj=0; jj<alphaChars.length; ++jj)
+    {
+      if (alphaChars.charAt(jj)==document.main.name.value.charAt(ii))
+      {
+       break;
+      }
+      else
+      {
+        if (jj==(alphaChars.length-1))
+        {
+          errormsg +='"' + document.main.name.value.charAt(ii) + '"'
+                   + ' is an invalid character for Name.\n';
+          error_n=true;
+        }
+      }
+      if (error_n)
+      {
+        document.main.name.select();
+      }
+    }
+  }
+}
+
+function validate_address()
+{
+  if (isAddressReq)
+  {
+    if (document.main.address.value=="")
+    {
+     errormsg+='Address required\n';
+     error_ad=true;
+     if (!error_n)
+     {
+       document.main.address.focus();
+     }
+    }
+  }
+}
+
+function validate_age()
+{
+  if (isAgeReq)
+  {
+    if (document.main.age.value=="")
+    {
+      errormsg+='Age required\n';
+      error_a=true;
+      if ((!error_n)&&(!error_ad))
+      {
+        document.main.age.focus();
+      }
+    }
+  }
+  for(var ii=0; ii<document.main.age.value.length; ++ii)
+  {
+    for(var jj=0; jj<numChars.length; ++jj)
+    {
+      if (numChars.charAt(jj)==document.main.age.value.charAt(ii))
+      {
+       break;
+      }
+      else
+      {
+        if (jj==(numChars.length-1))
+        {
+          errormsg +='"' + document.main.age.value.charAt(ii) + '"'
+                   + ' is an invalid character for Age.\n';
+          error_a=true;
+        }
+      }
+      if (error_a)
+      {
+        if ((!error_n)&&(!error_ad))
+        {
+          document.main.age.select();
+        }
+      }
+    }
+  }
+}
+
+function validate_zip()
+{
+  if (isZipReq)
+  {
+    if (document.main.zip.value=="")
+    {
+      errormsg+='Zip required\n';
+      error_z=true;
+      if ((!error_n)&&(!error_ad)&&(!error_a))
+      {
+       document.main.zip.focus();
+      }
+     }
+   }
+   for(var i=0; i<document.main.zip.value.length; i++)
+   {
+     for(var j=0; j<numChars.length; j++)
+     {
+       if (numChars.charAt(j)==document.main.zip.value.charAt(i))
+       {
+         break;
+       }
+       else
+       {
+         if (j==(numChars.length-1))
+         {
+           errormsg +='"' + document.main.zip.value.charAt(i) + '"'
+                          + ' is an invalid character for Zip.\n';
+           error_z=true;
+         }
+       }
+       if (error_z)
+       {
+         if ((!error_n)&&(!error_ad)&&(!error_a))
+         {
+           document.main.zip.select();
+         }
+      }
+    }
+  }
+}
+
+function validate()
+{
+  reset_error();
+  validate_name();
+  validate_address();
+  validate_age();
+  validate_zip();
+
+  if (error_n||error_ad||error_a||error_z)
+  {
+    error=true;
+  }
+  else
+  {
+    error=false;
+  }
+  if (!error)
+  {
+    document.main.submit();
+  }
+  else
+  {
+    alert(errormsg);
+  }
+}
+
+//-- End hiding JavaScript from older browsers -->
+</SCRIPT>
+
+</HEAD>
+
+<!--the onload puts focus on, and highlights the text of, the first field-->
+<BODY ONLOAD="document.main.name.focus();document.main.name.select()">
+
+<table style="border:3 solid #CC0000" bgcolor="#EFEFEF">
+  <tr><td>
+    <font face="verdana,arial,helvetica" size="-1" color="#000000">
+    <form name="main" method="get" action="http://www.YourServer.com/cgi-bin/SomeCgiFile.cgi">
+    <input type="text" width="30" name="name"    style="border:1 solid #000000"> << Name (required)<BR />
+    <input type="text" width="30" name="address" style="border:1 solid #000000"> << Address (required)<BR />
+    <input type="text" width="30" name="age"     style="border:1 solid #000000"> << Age<BR />
+    <input type="text" width="30" name="zip"     style="border:1 solid #000000"> << Zip (required)<BR /><BR />
+    <center>
+     <input type="button" value="Submit" onClick="javascript:validate();"
+            style="border:1 solid #000000; cursor:pointer; cursor:hand; width:120">
+     <input type="reset" style="border:1 solid #000000; cursor:hand; cursor:pointer; width:120">
+    </center>
+    </form>
+    </font>
+  </td></tr>
+</table>
+
+</BODY>
+</HTML>

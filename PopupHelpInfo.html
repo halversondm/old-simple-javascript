@@ -1,0 +1,117 @@
+<!--pop up help info when hover the mouse over links-->
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+         "http://www.w3.org/TR/html4/strict.dtd">
+
+<HTML>
+<HEAD>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+
+
+<style type="text/css">
+#MyObjectName{position:absolute; width:200; visibility:hidden; z-index:200}
+.clDescription{width:150; font-family:verdana,arial,helvetica; font-size:11px;
+ background-color:#cccccc; padding:3px; border: 1px solid #999999}
+#MyObjectLinks{position:absolute; left:100; top:200; z-index:1}
+</style>
+
+<SCRIPT type="text/javascript">
+function checkBrowser()
+{
+   this.ver=navigator.appVersion
+      this.dom=document.getElementById?1:0
+      this.ie5=(this.ver.indexOf("MSIE 5")>-1 && this.dom)?1:0;
+      this.ie4=(document.all && !this.dom)?1:0;
+      this.ns5=(this.dom && parseInt(this.ver) >= 5) ?1:0;
+      this.ns4=(document.layers && !this.dom)?1:0;
+      this.bw=(this.ie5 || this.ie4 || this.ns4 || this.ns5);
+      return this;
+}
+
+bw=new checkBrowser()
+messages=new Array()
+messages[0]="test link 0 description"
+messages[1]="test link 1 description"
+messages[2]="test link 2 description"
+messages[3]="test link 3 description"
+messages[4]="test link 4 description"
+
+fromX= 10 // # pixels actual mouse X should the description box appear
+fromY=-15 // # pixels actual mouse Y should the description box appear
+
+function makeObj(obj)
+{
+   this.css=bw.dom? document.getElementById(obj).style:bw.ie4?document.all[obj].style:bw.ns4?document.layers[obj]:0;
+   this.wref=bw.dom? document.getElementById(obj):bw.ie4?document.all[obj]:bw.ns4?document.layers[obj].document:0;
+   this.writeIt=b_writeIt;
+   return this;
+}
+
+function b_writeIt(text)
+{
+   if(bw.ns4)
+   {
+     this.wref.write(text);this.wref.close()
+   }
+   else
+   {
+     this.wref.innerHTML=text
+   }
+}
+
+// capture mousemove
+var descx,descy;
+function popmousemove(e)
+{
+  descx=bw.ns4?e.pageX:event.x;
+  descy=bw.ns4?e.pageY:event.y
+}
+
+// init page
+var isLoaded;
+function popupInit()
+{
+  oDesc=new makeObj('MyObjectName');
+  if(bw.ns4)document.captureEvents(Event.MOUSEMOVE);
+  document.onmousemove=popmousemove;
+  isLoaded=true;
+}
+
+// display description
+function popup(num)
+{
+  if(isLoaded)
+  {
+    oDesc.writeIt('<span class="clDescription">'+messages[num]+'</span>');
+    if(bw.ie5) descy=descy+document.body.scrollTop;
+    oDesc.css.left=descx+fromX; oDesc.css.top=descy+fromY;
+    oDesc.css.visibility='visible';
+  }
+}
+
+// make popup description disappear
+function popout(num)
+{
+   if(isLoaded) oDesc.css.visibility='hidden';
+}
+
+onload=popupInit;
+</script>
+</HEAD>
+
+
+<BODY>
+
+Hover the mouse over any link and watch what happens<BR />
+
+<div id="MyObjectName"><!--Empty div--></div>
+<div id="MyObjectLinks">
+  <a href="#" onmouseover="popup(0)" onmouseout="popout(0)">test link 0</a> -
+  <a href="#" onmouseover="popup(1)" onmouseout="popout(1)">test link 1</a> -
+  <a href="#" onmouseover="popup(2)" onmouseout="popout(2)">test link 2</a> -
+  <a href="#" onmouseover="popup(3)" onmouseout="popout(3)">test link 3</a> -
+  <a href="#" onmouseover="popup(4)" onmouseout="popout(4)">test link 4</a>
+</div>
+
+</BODY>
+</HTML>

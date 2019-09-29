@@ -1,0 +1,31 @@
+<!--show directory of file of current web page, launch from a button-->
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+         "http://www.w3.org/TR/html4/strict.dtd">
+
+<HTML>
+<HEAD>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+
+
+<SCRIPT type="text/javascript">
+<!-- Begin hiding JavaScript from older browsers --
+
+var myloc = window.location.href;
+var locarray = myloc.split("/");
+delete locarray[(locarray.length-1)];
+var arraytext = locarray.join("/");
+
+//-- End hiding JavaScript from older browsers -->
+</SCRIPT>
+</HEAD>
+
+<BODY>
+
+<form>
+  <input type=button value="Show current directory listing of this web page"
+         onClick="window.location=arraytext;">
+</form>
+
+</BODY>
+</HTML>

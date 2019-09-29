@@ -1,0 +1,31 @@
+<!--Use a button as a link-->
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+         "http://www.w3.org/TR/html4/strict.dtd">
+
+<HTML>
+<HEAD>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+
+
+<SCRIPT type="text/javascript">
+<!-- Begin hiding JavaScript from older browsers --
+
+function goToHere(whereToLinkTo)
+{
+  location = whereToLinkTo;
+}
+
+//-- End hiding JavaScript from older browsers -->
+</SCRIPT>
+</HEAD>
+
+<BODY>
+
+<FORM>
+  <INPUT type=Button onClick='goToHere("_LinkFromAButtonNext.html")'
+         value="Click Here to do Link">
+</FORM>
+
+</BODY>
+</HTML>

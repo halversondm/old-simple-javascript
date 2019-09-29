@@ -1,0 +1,37 @@
+<!--trim leading and/or trailing blank spaces from a text string-->
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+         "http://www.w3.org/TR/html4/strict.dtd">
+
+<HTML>
+<HEAD>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+
+
+</HEAD>
+
+
+<BODY>
+
+<!--when text box loses focus then trimming of leading spaces will occur-->
+<form>
+Enter text string to trim leading spaces from: <input type=text size=50 value=""
+   onChange="javascript:while(''+this.value.charAt(0)==' ')this.value=this.value.substring(1,this.value.length);"><br />
+</form>
+
+
+<!--when text box loses focus then trimming of trailing spaces will occur-->
+<form>
+Enter text string to trim trailing spaces from:  <input type=text size=50 value=""
+   onChange="javascript:while(''+this.value.charAt(this.value.length-1)==' ')this.value=this.value.substring(0,this.value.length-1);"><br />
+</form>
+
+<!--when text box loses focus then trimming of leading and trailing spaces will occur-->
+<form>
+Enter text string to trim leading and trailing spaces from:  <input type=text size=50 value=""
+   onChange="javascript:while(''+this.value.charAt(0)==' ')this.value=this.value.substring(1,this.value.length);
+   javascript:while(''+this.value.charAt(this.value.length-1)==' ')this.value=this.value.substring(0,this.value.length-1);"><br />
+</form>
+
+</BODY>
+</HTML>

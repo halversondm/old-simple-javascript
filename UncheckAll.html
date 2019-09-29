@@ -1,0 +1,45 @@
+<!--uncheck all checkboxes with just one click-->
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+         "http://www.w3.org/TR/html4/strict.dtd">
+
+<HTML>
+<HEAD>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+
+
+<SCRIPT type="text/javascript">
+<!-- Begin hiding JavaScript from older browsers --
+
+function modify_boxes(to_be_checked,total_boxes)
+{
+  for ( ii=0 ; ii < total_boxes ; ++ii )
+  {
+     if (to_be_checked)
+     {
+        document.forms[0].chkboxarray[ii].checked=true;
+     }
+     else
+     {
+        document.forms[0].chkboxarray[ii].checked=false;
+     }
+  }
+}
+//-- End hiding JavaScript from older browsers -->
+</SCRIPT>
+</HEAD>
+
+<BODY>
+
+<FORM>
+  <INPUT TYPE=checkbox NAME="chkboxarray" VALUE="1"><br />
+  <INPUT TYPE=checkbox NAME="chkboxarray" VALUE="2"><br />
+  <INPUT TYPE=checkbox NAME="chkboxarray" VALUE="3"><br />
+  <INPUT TYPE=button   NAME="CheckAll"    VALUE="Check All Boxes"
+         onClick="modify_boxes(true,3)">
+  <INPUT TYPE=button   NAME="UnCheckAll"  VALUE="UnCheck All Boxes"
+         onClick="modify_boxes(false,3)">
+</FORM>
+
+</BODY>
+</HTML>

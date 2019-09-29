@@ -1,0 +1,32 @@
+<!--show a message on the status bar when hover the mouse pointer-->
+<!--over a link-->
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+         "http://www.w3.org/TR/html4/strict.dtd">
+
+<HTML>
+<HEAD>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+
+
+<SCRIPT type="text/javascript">
+<!-- Begin hiding JavaScript from older browsers --
+
+function stat_write(MyMessageText)
+{
+window.status=MyMessageText;
+}
+//-- End hiding JavaScript from older browsers -->
+</SCRIPT>
+</HEAD>
+
+<BODY>
+
+  <A HREF="http://WhereEverYouWish.com"
+     onMouseover="stat_write('This will show on the status bar');return true;"
+     onMouseout="stat_write('');return true;">    <!--clear status bar text-->
+     Hover mouse here and look at status bar
+  </A>
+
+</BODY>
+</HTML>

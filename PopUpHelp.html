@@ -1,0 +1,47 @@
+<!--pop up a Help window with you own text-->
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+         "http://www.w3.org/TR/html4/strict.dtd">
+
+<HTML>
+<HEAD>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+
+
+<SCRIPT type="text/javascript">
+<!-- Begin hiding JavaScript from older browsers
+
+function explain(name, output, msg)
+{
+   newwin = window.open('','','top=150,left=150,width=325,height=300');
+   if (!newwin.opener)
+   {
+      newwin.opener = self;
+   }
+   with (newwin.document)
+   {
+      open();
+      write('<html>');
+      write('<body onLoad="document.form.box.focus()"><form name=form>' + msg + '<br />');
+      write('<p>You may enter your ' + name + ' here and it will be copied into the form for you.');
+      write('<p><center>' + name + ':  <input type=text name=box size=10 onKeyUp=' + output + '=this.value>');
+      write('<p><input type=button value="Click to close when finished" onClick=window.close()>');
+      write('</center></form></body></html>');
+      close();
+   }
+}
+
+//  End hiding JavaScript from older browsers-->
+</script>
+
+
+<BODY>
+
+<form name=form method=post action="/cgi-bin/your-script.cgi">
+Enter First Field text:  <input type=text name="MyFirstEntryField" size=10>  <a href="javascript:explain('Your First Entry', 'opener.document.form.MyFirstEntryField.value', 'Any help text message that you want goes here...');" onMouseOver="window.status='Click for explanation...';return true;" onMouseOut="window.status='';return true;">Help?</a>
+<br />
+Enter Second Field text: <input type=text name="MySecondEntryField" size=10> <a href="javascript:explain('Your Second Entry', 'opener.document.form.MySecondEntryField.value', 'And any helpful text message that you need goes here...');" onMouseOver="window.status='Click for explanation...';return true;" onMouseOut="window.status='';return true;">Help?</a>
+</form>
+
+</BODY>
+</HTML>

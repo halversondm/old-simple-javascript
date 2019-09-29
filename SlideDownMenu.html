@@ -1,0 +1,78 @@
+<!--slide-down menu system, max two levels, non-moveable-->
+<!--NOTE: this file requires the use of a separate file called-->
+<!--       sliding_menu.js-->
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+         "http://www.w3.org/TR/html4/strict.dtd">
+
+<HTML>
+<HEAD>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+
+</HEAD>
+
+<BODY>
+<SCRIPT type="text/javascript">
+<!-- Begin hiding JavaScript from older browsers --
+
+function goToURL()
+{
+   history.go(-1);
+}
+
+//-- End hiding JavaScript from older browsers -->
+</SCRIPT>
+
+<style>
+  .menu { position:relative;background-color:gold;border:1px solid darkblue;
+   width:150;font-size:11px;font-family:verdana;font:bold;position:absolute;
+   cursor:default; }
+
+  .item_panel { width:150;border-left:1px solid darkblue;
+    border-right:1px solid darkblue;clip:rect(0,150,0,0);position:absolute; }
+
+  .item_panel a { text-decoration:none;color:black;cursor:hand; }
+
+  .item  { background-color:lightyellow;width:148;font-size:10px;
+   font-family:verdana; }
+</style>
+
+
+<script type="text/javascript" src="sliding_menu.js">
+</script>
+
+<!--single table cell containing the menu-->
+<!--each entry has the format of the following two parts:-->
+<!--  Link[nn] which defines each element in the menu array-->
+<!--  Value of the menu array element-->
+<!--  where the value is a delimited string with the following parts:-->
+<!--    menu level with '0'=has sub-menus, '1'=sub-menu-->
+<!--    text to show up on the menu element-->
+<!--    URL that is to be linked to when the menu item is clicked-->
+<!--    target window to use with the choices being any one of the following:-->
+<!--       self  = current window (default if none given)-->
+<!--       blank = new window-->
+<!--       top   = parent window-->
+<!--       frame_name = name of frame within the current window-->
+<table width=150><tr><td>
+  <script type="text/javascript">
+    var Link = new Array();
+    Link[0]  = "0|Home";
+    Link[1]  = "1|Home|http://www.javascriptsource.com|";
+    Link[2]  = "1|More Scripts|http://www.javascript.com|";
+    Link[3]  = "1|Contact|http://www.javascriptsource.com/contact-us.html|";
+    Link[4]  = "1|Traffic|http://www.thecounter.com|";
+    Link[5]  = "0|Access";
+    Link[6]  = "1|Login|Login.asp|";
+    Link[7]  = "1|Logout|Logout.asp|"
+    Link[8]  = "0|Scripts";
+    Link[9]  = "1|Asp|http://www.javascriptsource.com|";
+    Link[10] = "1|JavaScript|http://www.javascriptsource.com|";
+    Link[11] = "0|Links";
+    Link[12] = "1|JavaScript sites|http://www.javascripts.com|blank";
+    startup(4);
+ </script>
+
+</BODY>
+</HTML>

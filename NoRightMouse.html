@@ -1,0 +1,50 @@
+<!--Disable use of right mouse on the web page-->
+<!--Of course, they can still use the toolbar and click View Source-->
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+         "http://www.w3.org/TR/html4/strict.dtd">
+
+<HTML>
+<HEAD>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+</HEAD>
+
+<BODY>
+
+Click the right mouse button anywhere on this web page
+
+<SCRIPT type="text/javascript">
+<!-- Begin hiding JavaScript from older browsers --
+
+var message="Right-Mouse Functions Disabled";
+function click(e)
+{
+   if (document.all)
+   {
+      if (event.button == 2)
+      {
+         alert(message);
+         return false;
+      }
+   }
+   if (document.layers)
+   {
+      if (e.which == 3)
+      {
+         alert(message);
+         return false;
+      }
+   }
+}
+
+if (document.layers)
+{
+   document.captureEvents(Event.MOUSEDOWN);
+}
+document.onmousedown=click;
+//-- End hiding JavaScript from older browsers -->
+</SCRIPT>
+
+</BODY>
+</HTML>
+

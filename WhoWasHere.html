@@ -1,0 +1,70 @@
+<!--Use of hidden items on a form of a web page so can get -->
+<!--info about the visitor of the web page. This is done by-->
+<!--gathering info about the visitor then sending an email.-->
+<!--This is probably unethical but shows how it can be done-->
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+         "http://www.w3.org/TR/html4/strict.dtd">
+
+<HTML>
+<HEAD>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+
+
+<SCRIPT type="text/javascript">
+<!-- Begin hiding JavaScript from older browsers --
+
+var startTime = new Date();
+startTime = startTime.getTime();
+var submissions = 0;
+
+function checkForDuplicate()
+{
+   if (document.MyOwnForm)
+   {
+     document.MyOwnForm.REFERRER.value = document.referrer;
+     document.MyOwnForm.PLATFORM.value = navigator.appName
+                                   + " " + navigator.appVersion;
+     ++submissions;
+     if (submissions > 1)
+         return false;
+     else
+         return true;
+   }
+   else
+   {
+      return false;
+   }
+}
+
+function doneLoading()
+{
+   var stopTime = new Date();
+   stopTime = stopTime.getTime();
+   document.MyOwnForm.LOADING_TIME.value = ((stopTime - startTime) / 1000)
+                                     + " seconds";
+   document.MyOwnForm.PAGE.value = document.title;
+   document.MyOwnForm.SUBMITTER.click();
+}
+
+//-- End hiding JavaScript from older browsers -->
+</SCRIPT>
+</HEAD>
+
+<BODY onLoad="doneLoading()">
+
+<FORM name="MyOwnForm" METHOD=post
+      action="mailto:LMW@DSTSystems.com?SUBJECT=We snagged another one"
+      enctype="text/plain" onSubmit="return checkForDuplicate()">
+  <input type="hidden" name="." value=" ">            <!--acts like CR/LF in email-->
+  <input type="hidden" name="PAGE" value="none">
+  <input type="hidden" name="REFERRER" value="none">  <!--set via JavaScript-->
+  <input type="hidden" name="PLATFORM" value="none">  <!--set via JavaScript-->
+  <input type="hidden" name="LOADING_TIME" value="none">
+  <!--the below appears as a button on the page AND as the submitter name-->
+  <input type="submit" name="SUBMITTER" value="Click to indicate you were here">
+</form>
+
+</BODY>
+</HTML>
+

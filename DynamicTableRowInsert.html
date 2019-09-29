@@ -1,0 +1,103 @@
+<!--dynamically add a row to the end of a table with a single click-->
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+         "http://www.w3.org/TR/html4/strict.dtd">
+
+<HTML>
+<HEAD>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+
+<SCRIPT type="text/javascript">
+<!-- Begin hiding JavaScript from older browsers --
+function addRow(id)
+{
+  var theTable;
+  if (document.getElementById)
+     theTable = document.getElementById(id);
+  else
+  if (document.all)
+     theTable = document.all.tags(id);
+
+  var tblRows = theTable.tBodies[0].rows.length;
+  var tblCols = theTable.tBodies[0].rows[1].cells.length;
+
+  var tbody = document.getElementById(id).getElementsByTagName("TBODY")[0];
+  var trnew = document.createElement("TR");
+
+  var tdnew;
+  for( var cols=1; cols<=tblCols; ++cols)
+  {
+    tdnewDataValue = "column "+cols;  // set up value to go into the column
+    tdnew = document.createElement("TD");
+    tdnew.appendChild(document.createTextNode(tdnewDataValue));
+    trnew.appendChild(tdnew);
+  }
+  tbody.appendChild(trnew);
+}
+//-- End hiding JavaScript from older browsers -->
+</SCRIPT>
+</HEAD>
+
+
+<BODY>
+
+<a href="javascript:addRow('myTable1')">Add row</a>
+
+<table id="myTable1" cellspacing="0" border="1">
+  <thead>
+    <tr>
+      <td>col1-Hdg</td>
+      <td>col2-Hdg</td>
+      <td>col3-Hdg</td>
+      <td>col4-Hdg</td>
+      <td>col5-Hdg</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>row1_column1</td>
+      <td>row1_column2</td>
+      <td>row1_column3</td>
+      <td>row1_column4</td>
+      <td>row1_column5</td>
+    </tr>
+    <tr>
+      <td>row2_column1</td>
+      <td>row1_column2</td>
+      <td>row1_column3</td>
+      <td>row1_column4</td>
+      <td>row1_column5</td>
+    </tr>
+  </tbody>
+</table>
+
+<a href="javascript:addRow('myTable2')">Add row</a>
+
+<table id="myTable2" cellspacing="0" border="1">
+  <thead>
+    <tr>
+      <td>col1-Hdg</td>
+      <td>col2-Hdg</td>
+      <td>col3-Hdg</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>row1_column1</td>
+      <td>row1_column2</td>
+      <td>row1_column3</td>
+    </tr>
+    <tr>
+      <td>row2_column1</td>
+      <td>row1_column2</td>
+      <td>row1_column3</td>
+    </tr>
+  </tbody>
+</table>
+
+</BODY>
+</HTML>
+
+
+
+

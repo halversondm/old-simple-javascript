@@ -1,0 +1,42 @@
+<!--detect user choice in a select list then do an action-->
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+         "http://www.w3.org/TR/html4/strict.dtd">
+
+<HTML>
+<HEAD>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+
+
+<SCRIPT type="text/javascript">
+<!-- Begin hiding JavaScript from older browsers --
+var Prices = new Array();
+Prices[1]  = '$1.95';
+Prices[2]  = '$2.95';
+Prices[3]  = '$3.95';
+
+function pricePick(inSelectList)
+{
+  //alert("..MaxSelections="+inSelectList.options.length);
+  document.myForm.myText.value=Prices[(inSelectList.selectedIndex)+1];
+}
+//-- End hiding JavaScript from older browsers -->
+</SCRIPT>
+
+</HEAD>
+
+<BODY>
+
+<form name="myForm">
+  <select name="theList" size="3" onchange="pricePick(this);">
+    <option>Chocolate</option>
+    <option>Vanilla</option>
+    <option>Strawberry</option>
+  </select>
+  <input type="text" name="myText" value="Click flavor to get price here" />
+</form>
+
+
+</BODY>
+</HTML>
+

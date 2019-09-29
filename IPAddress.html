@@ -1,0 +1,32 @@
+<!--Not the most ethical thing to do but here's how to get-->
+<!--the IP address of the web page viewer.-->
+<!--Note that this only works in NetScape-->
+<!--Note that an IP address looks something like:  123.456.78.901-->
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+         "http://www.w3.org/TR/html4/strict.dtd">
+
+<HTML>
+<HEAD>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+</HEAD>
+
+<BODY>
+<SCRIPT type="text/javascript">
+<!-- Begin hiding JavaScript from older browsers --
+
+if ((navigator.appVersion.indexOf("4.") != -1)
+ && (navigator.appName.indexOf("Netscape") != -1))
+{
+   ip = "" + java.net.InetAddress.getLocalHost().getHostAddress();
+   document.write("Your IP address is " + ip);
+}
+else
+{
+   document.write("IP Address only shown in Netscape with Java enabled!");
+}
+//-- End hiding JavaScript from older browsers -->
+</SCRIPT>
+
+</BODY>
+</HTML>

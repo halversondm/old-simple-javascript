@@ -1,0 +1,38 @@
+<!--alter image size via hovering mouse point over the image-->
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+         "http://www.w3.org/TR/html4/strict.dtd">
+
+<HTML>
+<HEAD>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+
+
+<SCRIPT type="text/javascript">
+<!-- Begin hiding JavaScript from older browsers --
+
+function enlarge()
+{
+   myImage.style.pixelWidth  = 700;
+   myImage.style.pixelHeigth = 560;
+}
+
+function revertBack()
+{
+   myImage.style.pixelWidth  = 350;
+   myImage.style.pixelHeigth = 280;
+}
+
+//-- End hiding JavaScript from older browsers -->
+</SCRIPT>
+</HEAD>
+
+<BODY>
+
+Hover the mouse over the image and watch<BR /><BR />
+
+<IMG ID="myImage" SRC="_ImageSizeChange.jpg" onMouseover="enlarge()"
+     onMouseout="revertBack()">
+
+</BODY>
+</HTML>

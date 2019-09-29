@@ -1,0 +1,112 @@
+<!--pop up a message only on the first time a user visits the web page-->
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+         "http://www.w3.org/TR/html4/strict.dtd">
+
+<HTML>
+<HEAD>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+
+
+<SCRIPT type="text/javascript">
+<!-- Begin hiding JavaScript from older browsers --
+
+var CookieName = "YourVisitCountCookie"
+var expDays = 1; // number of days the cookie should last
+
+var popupHTMLFirstVisitOnly = "_PopupOnlyOnce.html";
+var windowprops = "width=300,height=200,location=no,toolbar=no,menubar=no,scrollbars=no,resizable=yes";
+
+function GetCookie (name)
+{
+   var arg = name + "=";
+   var alen = arg.length;
+   var clen = document.cookie.length;
+   var ii = 0;
+   while (ii < clen)
+   {
+      var jj = ii + alen;
+      if (document.cookie.substring(ii, jj) == arg)
+          return getCookieVal (jj);
+      ii = document.cookie.indexOf(" ", ii) + 1;
+      if (ii == 0)
+          break;
+   }
+   return null;
+}
+
+function SetCookie (name, value)
+{
+   var argv = SetCookie.arguments;
+   var argc = SetCookie.arguments.length;
+   var expires = (argc > 2) ? argv[2] : null;
+   var path = (argc > 3) ? argv[3] : null;
+   var domain = (argc > 4) ? argv[4] : null;
+   var secure = (argc > 5) ? argv[5] : false;
+   document.cookie = name + "=" + escape (value) +
+   ((expires == null) ? "" : ("; expires=" + expires.toGMTString())) +
+   ((path == null) ? "" : ("; path=" + path)) +
+   ((domain == null) ? "" : ("; domain=" + domain)) +
+   ((secure == true) ? "; secure" : "");
+}
+
+function DeleteCookie (name)
+{
+   var exp = new Date();
+   exp.setTime (exp.getTime() - 1);
+   var cval = GetCookie (name);
+   document.cookie = name + "=" + cval + "; expires=" + exp.toGMTString();
+}
+
+var exp = new Date();
+exp.setTime(exp.getTime() + (expDays*24*60*60*1000));
+
+function amt()
+{
+   var count = GetCookie(CookieName)
+   if(count == null)
+   {
+      SetCookie(CookieName,'1')
+      return 1
+   }
+   var newcount = parseInt(count) + 1;
+   DeleteCookie(CookieName)
+   SetCookie(CookieName,newcount,exp)
+   return count
+}
+
+function getCookieVal(offset)
+{
+   var endstr = document.cookie.indexOf (";", offset);
+   if (endstr == -1)
+       endstr = document.cookie.length;
+   return unescape(document.cookie.substring(offset, endstr));
+}
+
+function checkCount()
+{
+   var count = GetCookie(CookieName);
+   if (count == null) // null=first visit
+   {
+     count=1;
+     SetCookie(CookieName, count, exp);
+     window.open(popupHTMLFirstVisitOnly, "", windowprops);
+   }
+   else // otherwise, update visit count
+   {
+     count++;
+     SetCookie(CookieName, count, exp);
+   }
+}
+// End hiding JavaScript from older browsers -->
+</SCRIPT>
+</HEAD>
+
+
+<BODY OnLoad="checkCount()">
+
+Welcome to here...
+
+</BODY>
+</HTML>
+

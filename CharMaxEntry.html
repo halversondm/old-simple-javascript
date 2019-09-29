@@ -1,0 +1,33 @@
+<!--assure that the given text entry does not exceed a max number-->
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+         "http://www.w3.org/TR/html4/strict.dtd">
+
+<HTML>
+<HEAD>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+
+
+<SCRIPT type="text/javascript">
+<!-- Begin hiding JavaScript from older browsers --
+
+function CheckMaxChars(inTextString,iMaxChars)
+{
+  if (inTextString.chars.value.length>iMaxChars)
+      alert("Input length limited to "+iMaxChars+" characters")
+  return false
+}
+//-- End hiding JavaScript from older browsers -->
+</SCRIPT>
+</HEAD>
+
+<BODY>
+
+<form onsubmit="return CheckMaxChars(this,30)">
+  <strong>Please type in your text </strong>(max 30 chars)<br />
+  <textarea rows="5" cols="38" name="chars"></textarea>
+  <br /><input type="submit" value="Submit!">
+</form>
+
+</BODY>
+</HTML>

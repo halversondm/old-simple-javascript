@@ -1,0 +1,83 @@
+<!--word lookup -- links to web sites Dictionary.com and Thesaurus.com-->
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+         "http://www.w3.org/TR/html4/strict.dtd">
+
+<HTML>
+<HEAD>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+
+
+<SCRIPT type="text/javascript">
+<!-- Begin hiding JavaScript from older browsers --
+
+
+function jump2form()
+{
+  document.dict_form.term.select();
+  document.dict_form.term.focus();
+}
+
+function isblank(s)
+{
+  for(var ii = 0; ii < s.length; ++ii)
+  {
+    var c = s.charAt(ii);
+    if ((c != ' ') && (c != '\n') && (c != '\t'))
+         return false;
+  }
+  return true;
+}
+
+function formcheck()
+{
+  var d = document.dict_form.db[1].checked;
+  var e = document.dict_form.term.value;
+  if ((e == null) || (e == "") || isblank(e))
+  {
+    alert("Please enter a word to look up.");
+    jump2form();
+  }
+  else
+  if (d == 1)
+  {
+    location.href = ("http://www.thesaurus.com/cgi-bin/search?config=roget&words="
+                     + escape(e));
+  }
+  else
+  {
+    location.href= ("http://www.dictionary.com/cgi-bin/dict.pl?term="
+                    + escape(e));
+  }
+  return false;
+}
+
+function ahdpop()
+{
+   win=window.open("http://www.dictionary.com/help/ahd3key.html",'AHDKey',
+                   'width=500,height=330,toolbar=no,location=no,'
+                   +'directories=no,menubar=no,scrollbars=yes,resizable=yes');
+   return false;
+}
+//-- End hiding JavaScript from older browsers -->
+</SCRIPT>
+</HEAD>
+
+<BODY>
+
+<FORM NAME="dict_form" METHOD="GET" ACTION="/cgi-bin/dict.pl"
+      onsubmit="return formcheck();">
+  <center>
+    <h2>Enter word to look up:</h2>
+    <INPUT TYPE="text" NAME="term" SIZE=17 MAXLENGTH=48 VALUE=""
+           style="font-size:11pt;">
+    <INPUT TYPE="submit" VALUE="Lookup" STYLE="font-size:11pt;">
+    <h3>Look for word in:</h3>
+    <INPUT TYPE="RADIO" NAME="db" VALUE="*" CHECKED>Dictionary
+    <INPUT TYPE="RADIO" NAME="db" VALUE="roget">Thesaurus
+  </center>
+</FORM>
+
+</BODY>
+</HTML>
+

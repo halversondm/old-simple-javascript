@@ -1,0 +1,162 @@
+<!--search for a text string within the data of a table-->
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+         "http://www.w3.org/TR/html4/strict.dtd">
+
+<HTML>
+
+<HEAD>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+
+  <TITLE>Example Table Search</TITLE>
+  <META http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+
+  <SCRIPT type="text/javascript>
+
+    <!--search all text in all rows until find a match somewhere in some row-->
+    <!--(a nice enhancement would be to limit this to a given column)-->
+    function identifyRows()
+    {
+      <!--do this to make search string be insensitive to case-->
+      var str1 = document.forms[0].elements[0].value.toLowerCase();
+
+      <!--assure a search string was entered-->
+      if(str1=='')
+      {
+        alert('Please enter a Search String.');
+        document.forms[0].elements[0].focus();
+        return false;
+      }
+
+      <!--reset row colors so that the even rows are one color and the odd rows are another-->
+      <!--in case a row was highlighted via a previous search-->
+      <!--NOTE: the name 'MySearchTable' here must be same as id assigned to table with the data-->
+      for(ii=0; ii<MySearchTable.rows.length; ++ii)
+      {
+        <!--NOTE: the below two colors are the even row #'s in the data table and old row #'s-->
+        MySearchTable.rows(ii).bgColor = (ii%2==0) ? '#EAEAFF' : '#D3D3D3'
+      }
+      for(ii=0; ii<MySearchTable.rows.length; ++ii)
+      {
+        <!--use 'toLowerCase()' so as to make table string being search insensitive to case-->
+        if(MySearchTable.rows(ii).innerText.toLowerCase().indexOf(str1) != -1)
+        {
+           MySearchTable.rows(ii).bgColor="Yellow"; <!--color of row found by search-->
+           MySearchTable.rows(ii).focus();
+           return true;
+        }
+      }
+      <!--search string could not be found so let operator know that-->
+      alert('Search String not found.');
+      document.forms[0].elements[0].focus();
+      return false;
+    }
+  </SCRIPT>
+
+</HEAD>
+
+<BODY bgColor=#FFFFFF leftMargin=0 topMargin=0 marginwidth="0" marginheight="0">
+
+<!--The text box to enter the search string and its accompanying Search button-->
+<form id="MyStringSrch">
+  <div align="center">
+     <table width="95%" border="0" >
+       <tr>
+          <td width="80%">Enter a Search String then hit SEARCH button: &nbsp;
+             <input type="text" name="srch">&nbsp;
+             <input type="button" name="btn" value="Search" onClick="identifyRows();">
+          </td>
+          <td width="20%">&nbsp;
+          </td>
+       </tr>
+     </table>
+  </div>
+</form>
+
+<form name="MyTable" action="" method="get">
+
+    <!--The table column headings-->
+    <table id="MySearchTableColHdgs" width="80%" border="0" bordercolor="#FFFFFF" cellpadding="0" cellspacing="0" height="25">
+      <tr bgcolor="#D3D3D3">
+        <td <B>Main-Name</B></td>
+        <td <B>Column-2</B></td>
+        <td <B>Column-3</B></td>
+        <td <B>Column-4</B></td>
+        <td <B>Column-5</B></td>
+      </tr>
+
+    </table>
+
+    <!--the table data-->
+    <table id=MySearchTable width="80%" border="0" bordercolor="#FFFFFF" cellpadding="0" cellspacing="0">
+
+      <tr bgcolor="#EAEAFF">
+        <td>YD43</td>
+        <td>Row8Col2</td>
+        <td>Row8Col3</td>
+        <td>Row8Col4</td>
+        <td>Row8Col5</td>
+      </tr>
+
+      <tr bgcolor="#D3D3D3">
+        <td>GC90</td>
+        <td>Row1Col2</td>
+        <td>Row1Col3</td>
+        <td>Row1Col4</td>
+        <td>Row1Col5</td>
+      </tr>
+
+      <tr bgcolor="#EAEAFF">
+        <td>RA73</td>
+        <td>Row2Col2</td>
+        <td>Row2Col3</td>
+        <td>Row2Col4</td>
+        <td>Row2Col5</td>
+      </tr>
+
+      <tr bgcolor="#D3D3D3">
+        <td>RR35</td>
+        <td>Row3Col2</td>
+        <td>Row3Col3</td>
+        <td>Row3Col4</td>
+        <td>Row3Col5</td>
+      </tr>
+
+      <tr bgcolor="#EAEAFF">
+        <td>RU92</td>
+        <td>Row4Col2</td>
+        <td>Row4Col3</td>
+        <td>Row4Col4</td>
+        <td>Row4Col5</td>
+      </tr>
+
+      <tr bgcolor="#D3D3D3">
+        <td>V434</td>
+        <td>Row5Col2</td>
+        <td>Row5Col3</td>
+        <td>Row5Col4</td>
+        <td>Row5Col5</td>
+      </tr>
+
+      <tr bgcolor="#EAEAFF">
+        <td>VB83</td>
+        <td>Row6Col2</td>
+        <td>Row6Col3</td>
+        <td>Row6Col4</td>
+        <td>Row6Col5</td>
+      </tr>
+
+      <tr bgcolor="#D3D3D3">
+        <td>Y396</td>
+        <td>Row7Col2</td>
+        <td>Row7Col3</td>
+        <td>Row7Col4</td>
+        <td>Row7Col5</td>
+      </tr>
+
+    </table>
+
+</form>
+
+</BODY>
+</HTML>

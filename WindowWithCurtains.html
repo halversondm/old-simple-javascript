@@ -1,0 +1,109 @@
+<!--bring up a window with the look of curtains opening-->
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+         "http://www.w3.org/TR/html4/strict.dtd">
+
+<HTML>
+<HEAD>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+
+
+<SCRIPT type="text/javascript">
+<!-- Begin hiding JavaScript from older browsers --
+
+
+xLeft = 0;
+xRight = 0;
+
+
+function openCurtain()
+{
+   xLeft -= 5
+   xRight += 5
+   if (navigator.appName == "Netscape")
+   {
+     document.curtainLeft.left = xLeft
+     document.curtainRight.left = xRight
+     aLeft = document.curtainLeft.left
+   }
+   else
+   {
+     document.all.curtainLeft.style.left = xLeft;
+     document.all.curtainRight.style.left = xRight;
+     a = document.all.curtainLeft.style.left;
+     aLen = a.length;
+     a = a.split("");
+     aLeft = ""
+     for (k = 0; k < aLen - 2; k++)
+     {
+       aLeft += a[k]
+     }
+     aLeft = new Number(aLeft)
+   }
+   if(aLeft > stopPos)
+   {
+     var timer=setTimeout("openCurtain()",60); // 2nd param=speed, lower=faster
+   }
+   else
+   {
+     if (navigator.appName == "Netscape")
+     {
+       document.curtainLeft.visibility = document.curtainRight.visibility = "hide"
+     }
+     else
+     {
+       document.all.curtainLeft.style.visibility =
+       document.all.curtainRight.style.visibility = "hidden"
+     }
+   }
+}
+//-- End hiding JavaScript from older browsers -->
+</SCRIPT>
+</HEAD>
+
+<BODY onLoad="openCurtain();">
+
+<SCRIPT type="text/javascript">
+<!-- Begin hiding JavaScript from older browsers --
+
+if (navigator.appName == "Netscape")
+{
+   document.write('<layer name="curtainLeft" left="0" top="0" bgcolor="#0000FF" '
+                  +'width="100" height="100" visibility="show"></layer>');
+   document.write('<layer name="curtainRight" left="0" top="0" bgcolor="#0000FF" '
+                  +'width="100" height="100" visibility="show"></layer>');
+   document.curtainLeft.clip.height = document.curtainRight.clip.height
+                                    = window.innerHeight;
+   document.curtainLeft.clip.width  = document.curtainRight.clip.width
+                                    = document.curtainRight.clip.left
+                                    = (window.innerWidth/2) - 10;
+   stopPos = "-" + window.innerWidth/2;
+}
+else
+{
+   document.write("<span id='curtainLeft' style='position:absolute;"
+                  +"visibility:visible;top:0;left:0;"
+                  +"background-color:#0000FF;'></span>");
+   document.write("<span id='curtainRight' style='position:absolute;"
+                  +"visibility:visible;top:0;left:0;"
+                  +"background-color:#0000FF;'></span>");
+   xRight = document.all.curtainRight.style.left
+          = document.all.curtainLeft.style.width
+          = document.all.curtainRight.style.width
+          = document.all.curtainRight.style.left
+          = (document.body.clientWidth/2) - 10;
+   document.all.curtainLeft.style.height = document.all.curtainRight.style.height
+                                         = document.body.clientHeight;
+   stopPos = document.body.clientHeight * (-1);
+}
+//-- End hiding JavaScript from older browsers -->
+</SCRIPT>
+
+<P><P><P>
+<CENTER><H1>
+And now, our show, starring that Oscar winning rabbit, Bugs Bunny !!!
+</H1></CENTER>
+
+
+</BODY>
+</HTML>

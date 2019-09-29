@@ -1,0 +1,92 @@
+<!--Select a date from a drop down list of dates-->
+<!--The list is limited to all dates within the current month-->
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+         "http://www.w3.org/TR/html4/strict.dtd">
+
+<HTML>
+<HEAD>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+
+
+<SCRIPT type="text/javascript">
+<!-- Begin hiding JavaScript code from old browsers
+
+function customize(form)
+{
+   var address = document.form1.url.value;
+   var op_tool  = (document.form1.tool.checked== true)  ? 1 : 0;
+   var op_loc_box  = (document.form1.loc_box.checked == true)  ? 1 : 0;
+   var op_dir  = (document.form1.dir.checked == true)  ? 1 : 0;
+   var op_stat  = (document.form1.stat.checked == true)  ? 1 : 0;
+   var op_menu  = (document.form1.menu.checked == true)  ? 1 : 0;
+   var op_scroll  = (document.form1.scroll.checked == true)  ? 1 : 0;
+   var op_resize  = (document.form1.resize.checked == true)  ? 1 : 0;
+   var op_width  = document.form1.width.value;
+   var op_height = document.form1.height.value;
+   var option = "toolbar="+ op_tool +",location="+ op_loc_box +",directories="
+       + op_dir +",status="+ op_stat +",menubar="+ op_menu +",scrollbars="
+       + op_scroll +",resizable="  + op_resize +",width=" + op_width +",height="+ op_height;
+   var win3 = window.open("", "what_I_want", option);
+   var win4 = window.open(address, "what_I_want");
+}
+
+function clear(form)
+{
+   document.form1.width.value="";
+   document.form1.height.value="";
+}
+
+// End JavaScript hiding -->
+</SCRIPT>
+</HEAD>
+
+
+<BODY>
+
+<SCRIPT type="text/javascript">
+<!-- Begin hide
+
+   today = new Date();
+   thismonth = today.getMonth()+1;
+   thisyear = today.getYear();
+   thisday = today.getDate();
+   montharray=new Array(31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31);
+   maxdays=montharray[thismonth-1];
+   if (thismonth==2)
+   {
+      if ((thisyear/4)!=parseInt(thisyear/4))
+      {
+         maxdays=28;
+      }
+      else
+      {
+         maxdays=29;
+      }
+   }
+   thismonth = "" + thismonth
+   if (thismonth.length == 1)
+   {
+      thismonth = "0" + thismonth;
+   }
+   document.write("<form>");
+   document.write("<select name=dates size=1>");
+   for (var theday = 1; theday <= maxdays; theday++)
+   {
+      var theday = "" + theday;
+      if (theday.length == 1)
+      {
+      theday = "0" + theday;
+      }
+      document.write("<option");
+      if (theday == thisday) document.write(" selected");
+      document.write(">");
+      document.write(thismonth + "-" + theday + "-" + thisyear);
+   }
+   document.write("</select></form>");
+
+// End Hide -->
+</SCRIPT>
+
+</BODY>
+</HTML>

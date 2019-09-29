@@ -1,0 +1,224 @@
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+         "http://www.w3.org/TR/html4/strict.dtd">
+
+<HTML>
+<HEAD>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+
+<TITLE>JavaScript Examples</TITLE>
+
+<SCRIPT type="text/javascript">
+
+var ScrollString="Many things done here can be a bit irritating. ";
+var timer = 0;
+
+function Scrollon()
+{
+   document.box.boxtext.value = ScrollString;
+   ScrollString = ScrollString.substring(1,ScrollString.length)
+                + ScrollString.charAt(0);
+   // decrease timeout value (2nd param) to speed up, increase to slow down
+   timer = setTimeout("Scrollon()",100) ;
+}
+
+function entryAlert()
+{
+   alert("This is here to show how irritating some JavaScript can be.");
+   return " ";
+}
+
+function TimeOutfunc()
+{
+   timeout = window.setTimeout("TimeOutfunc()", 1000);
+   var today = new Date();
+   document.forms[0].elements[0].value = today.toString();
+}
+
+function browsertest()
+{
+   thisapp=navigator.appName;
+   thisversion=navigator.appVersion;
+   thisappcodename=navigator.appCodeName;
+   alert("You are using " + thisapp + " version " + thisversion
+         + ", which is code named " + thisappcodename + ".");
+}
+
+hrefloc=this.location
+// this assigns the current URL to the global variable hrefloc, called later
+// in the script as a workaround for a problem involving accessing files from
+// a local disk.
+
+function NewWindow1()  //this defines the first window, accessed by button#1
+{
+   window1=window.open("", "NewWindow1",
+      "toolbar=no,directories=no,menubar=no,scrollbars=no,width=200,height=225");
+   window1.document.writeln("<Body bgcolor=ffffff>");
+   window1.document.writeln("<title>The Answer</title>");
+   window1.document.writeln("<center>");
+   window1.document.writeln("Maybe a good way to answer to a question.");
+   window1.document.writeln("<FORM><INPUT TYPE='button' "
+      + "VALUE=Close onClick='window.close()'></FORM></CENTER>");
+   window1.document.writeln("</BODY></HTML>");
+   window1.document.close();
+}
+
+function NewWindow2()  //this defines the second window, accessed by button#2
+{
+   window2=window.open("", "NewWindow2",
+     "toolbar=no,directories=no,menubar=no,scrollbars=no,width=200,height=225");
+   window2.document.writeln("<TITLE>Hint</TITLE>");
+   window2.document.writeln("<body bgcolor=ffffff>");
+   window2.document.writeln("<center>");
+   window2.document.writeln("You could give hints this way, too.");
+   window2.document.writeln("<FORM><INPUT TYPE='button' VALUE='Close' "
+                            + "onClick='window.close()'></FORM></CENTER>");
+   window2.document.writeln("</BODY></HTML>");
+   window2.document.close();
+}
+
+function NewWindow()
+{
+   win2=window.open("a.gif","NewWindow","toolbar=no,directories=no,"
+                    + "menubar=no,scrollbars=no,width=200,height=225");
+}
+
+function nav(x)
+{
+   history.go(x);
+}
+
+function pushbutton()
+{
+   alert("You can write any message here.");
+}
+
+function formHandler()
+{
+   var URL = document.pulldown.selectname.options[
+             document.pulldown.selectname.selectedIndex].value
+   window.location.href = URL
+}
+
+imageURL="b.gif";
+
+function changeImage()
+{
+   if(imageURL=="a.gif")
+   {
+     imageURL = "b.gif";
+   }
+   else
+   {
+     imageURL = "a.gif";
+   }
+   document.images[0].src = imageURL;
+}
+
+</SCRIPT>
+</HEAD>
+
+
+<!BODY onLoad="browsertest()">
+<!BODY onLoad = "timeout = setTimeout('TimeOutfunc();',1000);">
+
+<BODY onload = 'onLoad = Scrollon();'>
+
+<!BODY onLoad = 'Scrollon()';  onLoad = 'entryAlert();'>
+<!BODY onLoad="scroll_start();">
+<!BODY onLoad = 'entryAlert();'>
+<FORM NAME = "box" onSubmit = "0">
+<CENTER>
+<h1>JavaScript Page</h1>
+This page shows a few things that can be done with JavaScript.
+<BR>
+Many of the things displayed on this page are "time-wasters",
+though a few may be useful for teachers.
+<h2>Scrolling Banner</h2>
+<INPUT TYPE="text" NAME="boxtext" SIZE="60">
+<!time>
+<!INPUT TYPE="text" NAME="disp" VALUE="" SIZE="25">
+<h2>Status Bar Messages</h2>
+These may have some good uses, but they are often over used.
+<P>
+Put your
+        <A HREF="#" onMouseOver="window.status='One good use for ESL teachers is defining vocabulary words..'; return true;"
+     onMouseOut='alert("Unfortunately it adds a lot of code to your page making your page slower to download, so be careful not to use it just to be cool.")'>
+     mouse over this
+        </a>
+        and look at the bottom of your screen.
+<h2>New Windows</h2>
+<FORM>
+<INPUT TYPE="button" VALUE="js02.html in a new window" onClick='window.open("js02.html");'>
+<input type="button" value="New Window" onclick='NewWindow();'>
+<input type="button" value="Answer" onclick=NewWindow1()>
+<input type="button" value="Hint" onclick=NewWindow2()>
+</FORM>
+<h2>E-mail Button</h2>
+It's sort of stupid to do this, since it requires a javascript enabled browser and also takes more code than the traditional
+<B>mailto:</b> code. (<a href="mailto:&#109;&#97;&#105;&#108;&#116;&#111;:iteslj&#64;ge.aitech.ac.jp">&#109;&#97;&#105;&#108;&#116;&#111;:iteslj&#64;ge.aitech.ac.jp</a>.)
+<P>
+<FORM>
+<INPUT TYPE="button" VALUE="send e-mail" onClick="self.location='mailto:&#109;&#97;&#105;&#108;&#116;&#111;:iteslj&#64;ge.aitech.ac.jp';">
+</FORM>
+<h2>Confirm Dialog Box</h2>
+Allows you to force someone to confirm that they really want to do something.
+Probably not of much use except to "show-off", so I wouldn't use it.<P>
+Click this link and you'll be given a choice.<BR>
+<A HREF = "http://www.aitech.ac.jp/~iteslj/" onClick="return confirm('Are you really ready to leave this page.');">The Internet TESL Journal</a>
+<h2>History Buttons</h2>
+<FORM>
+<INPUT TYPE="button" VALUE="GO BACK" onClick="nav(-1)">
+<INPUT TYPE="button" VALUE="GO FORWARD" onClick="nav(1)">
+</FORM>
+<P>
+Or as a clickable link:
+<A HREF=javascript:history.go(-2)>Back 2 Pages</A>
+<h2>Click and Get an Alert and Jump to the Top</h2>
+<A HREF="#" onclick="pushbutton();">Click Here!</A>
+<BR>
+<A HREF="#" onclick="alert('See the source of this page to see the difference.');">Click Here!, too.</A>
+<h2>onFocus Alert</h2>
+<FORM>
+Type something here:
+<INPUT type="text" name="Click Here" size=35 onFocus="alert('Type in your name.')">
+</FORM>
+<h2>Background Color</h2>
+Click inside any box to change the color of the background.<P>
+<FORM>
+<INPUT Type="text" Name="bgred" value="Red" onFocus= "document.bgColor='red'">
+<P>
+<INPUT Type="text" Name="bggreen" value="Green" onFocus= "document.bgColor='green'">
+<P>
+<INPUT Type="text" Name="bgblue" value="Blue" onFocus= "document.bgColor='blue'">
+<P>
+<INPUT Type="text" Name="bgyellow" value="Yellow" onFocus= "document.bgColor='yellow'">
+<P>
+<INPUT Type="text" Name="bgcoral" value="Coral" onFocus= "document.bgColor='FF7F00'">
+<P>
+<INPUT Type="text" Name="bgnewmidnightblue" value="New Midnight Blue" onFocus= "document.bgColor='00009C'">
+<P>
+<INPUT Type="text" Name="bgcyan" value="Cyan" onFocus= "document.bgColor='00FFFF'">
+</FORM>
+<A NAME="PULLDOWN"></a><h2>Pull-Down Menu for URLs</h2>
+This not only requires more code than doing it the traditional way, it also doesn't change the link's color allowing the user to know which URL he has already visited.
+<FORM name = "pulldown">
+<SELECT NAME="selectname" SIZE=1 onChange ="formHandler()">
+<OPTION VALUE="#PULLDOWN">- Choose a Search Engine -
+<OPTION VALUE="http://www.yahoo.com">Yahoo
+<OPTION VALUE="http://www.metacrawler.com">Metacrawler
+<OPTION VALUE="http://www.altavista.digital.com ">Altavista
+<OPTION VALUE="http://www.webcrawler.com ">Webcrawler
+<OPTION VALUE="http://www.lycos.com ">Lycos
+</SELECT>
+<h2>Display a New Image</h2>
+<FORM>
+<INPUT TYPE=Button VALUE="Change the Image" onClick="changeImage();">
+</FORM>
+<P>
+<IMG SRC="b.gif" width=32 height=32 NAME="myImage">
+</CENTER>
+
+</BODY>
+</HTML>
